@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/40d294a4759c7df57ae0/maintainability)](https://codeclimate.com/github/AlexandreZelante/ESI/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/40d294a4759c7df57ae0/test_coverage)](https://codeclimate.com/github/AlexandreZelante/ESI/test_coverage)
+
 # Descrição
 O projeto busca auxiliar os usuários na prática de atividade físicas usando métodos gameficados, buscando melhorar o engajamento e motivação dos mesmos. Essa aplicação foca no controle de registro das atividades físicas, com treinos sendo disponibilizados pelos instrutores, e os usuários recebendo pontos por atingir objetivos relacionados as atividades no guia de treino.
 
