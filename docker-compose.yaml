@@ -21,4 +21,4 @@ services:
       - PGPASSWORD=password
 volumes:
   pgdata:
-      external: true
+    external: true
