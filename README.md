@@ -3,7 +3,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/40d294a4759c7df57ae0/test_coverage)](https://codeclimate.com/github/AlexandreZelante/ESI/test_coverage)
 [![Build Status](https://travis-ci.org/AlexandreZelante/ESI.svg?branch=master)](https://travis-ci.org/AlexandreZelante/ESI)
 
-- Link Heroku: https://esi-2020.herokuapp.com/
+- Link Heroku: https://esi-2020.herokuapp.com/workouts/
 - Link Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2466056
 
 # Descrição
