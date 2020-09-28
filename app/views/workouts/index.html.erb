@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Workouts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Coach</th>
+      <th>Days</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.coach %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
