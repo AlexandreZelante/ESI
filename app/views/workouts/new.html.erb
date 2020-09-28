@@ -4,12 +4,15 @@
 
 
 <%= form_for(@workout) do |f| %>
-  <%= f.label :name %>
+  <%= f.label :name %><br/>
   <%= f.text_field :name %>
-  <%= f.label :coach %>
+  <br/>
+  <%= f.label :coach %><br/>
   <%= f.text_field :coach %>
-  <%= f.label :days %>
-  <%= f.text_field :days %>
+  <br/>
+  <%= f.label :days %><br/>
+  <%= f.text_area :days %>
+  <br/>
   <%= f.submit %>
 <% end %>
 
