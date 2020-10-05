@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_143826) do
     t.string "name"
     t.string "email"
     t.string "cpf"
-    t.string "birth_date"
+    t.date "birth_date"
     t.string "phone"
     t.string "gender"
     t.string "password"

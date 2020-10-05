@@ -11,6 +11,7 @@
             <th>Birth date</th>
             <th>Phone</th>
             <th>Gender</th>
+            <th colspan="2"></th>
         </tr>
     </thead>
 
@@ -23,7 +24,12 @@
                 <td><%= users.birth_date %></td>
                 <td><%= users.phone %></td>
                 <td><%= users.gender %></td>
+                <td><%= link_to 'Show', users %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
