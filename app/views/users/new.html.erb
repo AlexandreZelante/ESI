@@ -4,28 +4,28 @@
 
 
 <%= form_for(@user) do |users| %>
-  <%= users.label :name %><br/>
+  Nome<br/>
   <%= users.text_field :name %>
   <br/>
-  <%= users.label :email %><br/>
+  Email<br/>
   <%= users.text_field :email %>
   <br/>
-  <%= users.label :cpf %><br/>
+  CPF<br/>
   <%= users.text_field :cpf %>
   <br/>
-  <%= users.label :birth_date %><br/>
+  Data de nascimento<br/>
   <%= users.date_field :birth_date, as: :date, value: users.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
   <br/>
-  <%= users.label :phone %><br/>
-  <%= users.text_area :phone %>
+  Telefone<br/>
+  <%= users.text_field :phone %>
   <br/>
-  <%= users.label :gender %><br/>
+  Gênero<br/>
     <%= users.radio_button :gender, 'Masculino' %> Masculino<br />
     <%= users.radio_button :gender, 'Feminino' %> Feminino<br />
     <%= users.radio_button :gender, 'Outro' %> Outro<br />
   <br/>
-  <%= users.label :password %><br/>
-  <%= users.text_field :password %>
+  Senha<br/>
+  <%= users.password_field :password %>
   <br/>
   <%= users.submit %>
 <% end %>
