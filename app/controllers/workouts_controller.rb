@@ -1,51 +1,30 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :set_workout, only: [:show]
+
   def index
     @workouts = Workout.all
   end
 
-  def show
-  end
-
-  def destroy
-    @workout.destroy
-    respond_to do |format|
-      format.html { redirect_to workouts_url, notice: 'Workout was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @workout.update(workout_params)
-        format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
-        format.json { render :show, status: :ok, location: @workout }
-      else
-        format.html { render :edit }
-        format.json { render json: @workout.errors, status: :unprocessable_entity }
-      end
-    end
+  def new
+    @workout = Workout.new
+    @days = Day.all.pluck(:name, :id)
+    1.times{ @workout.days.build }
   end
 
   def edit
+    @days = Day.all.pluck(:name, :id)
   end
 
   def create
     @workout = Workout.new(workout_params)
-
-    respond_to do |format|
-      if @workout.save
-        format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
-        format.json { render :show, status: :created, location: @workout }
-      else
-        format.html { render :new }
-        format.json { render json: @workout.errors, status: :unprocessable_entity }
-      end
+    if @workout.save
+      redirect_to workout_path(@workout), notice: 'Treino cadastrado com sucesso.'
+    else
+      render :new
     end
   end
 
-  def new
-    @workout = Workout.new
+  def show
   end
 
   private
@@ -54,6 +33,7 @@ class WorkoutsController < ApplicationController
     end
 
     def workout_params
-      params.require(:workout).permit(:name, :coach, :days)
+      params.require(:workout)
+        .permit(:name, :coach, days_attributes: [:id, :workout_id, :name, :exercises, :_destroy ])
     end
 end

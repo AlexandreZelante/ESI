@@ -10,22 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_012520) do
+ActiveRecord::Schema.define(version: 2020_10_14_220529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "treinos_teste", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-    t.index ["name"], name: "treinos_teste_name_key", unique: true
+  create_table "days", force: :cascade do |t|
+    t.string "name"
+    t.text "exercises"
+    t.bigint "workout_id", null: false
+    t.index ["workout_id"], name: "index_days_on_workout_id"
   end
 
   create_table "workouts", force: :cascade do |t|
     t.string "name"
     t.string "coach"
-    t.jsonb "days"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "days", "workouts"
 end

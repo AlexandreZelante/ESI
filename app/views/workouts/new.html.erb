@@ -1,19 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cadastrar treino</h1>
+<h1>Cadastrar novo treino</h1>
 
-
-<%= form_for(@workout) do |f| %>
-  <%= f.label :name %><br/>
-  <%= f.text_field :name %>
-  <br/>
-  <%= f.label :coach %><br/>
-  <%= f.text_field :coach %>
-  <br/>
-  <%= f.label :days %><br/>
-  <%= f.text_area :days %>
-  <br/>
-  <%= f.submit %>
-<% end %>
-
-<br>
+<%= render 'form', workout: @workout %>

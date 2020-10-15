@@ -1,0 +1,12 @@
+<div class="day">
+  <%= day_form.label :name, "Nome do dia" %><br/>
+  <%= day_form.text_field :name %>
+
+  <br/>
+  <%= day_form.label :exercises, "Exercícios do dia" %><br/>
+  <%= day_form.text_area :exercises %>
+
+  <br/>
+  <%= day_form.label :_destroy, "Apagar" %>
+  <%= day_form.check_box :_destroy, {data: {action: "fields-for#hide"}} %>
+</div>

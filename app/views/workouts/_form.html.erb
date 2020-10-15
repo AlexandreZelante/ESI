@@ -1,0 +1,26 @@
+<%= form_with(model: workout, local: true) do |form| %>
+  <div data-controller="fields-for">
+    <%= form.label :name, "Nome do treino" %>
+    <%= form.text_field :name %>
+
+    <br/>
+    <%= form.label :coach, "Nome do treinador" %>
+    <%= form.text_field :coach %>
+
+    <hr/>
+
+    <%= form.fields_for :days do |day_form| %>
+      <%= render "days/fields", day_form: day_form %>
+    <% end %>
+
+    <br/>
+    <%= button_tag("Adicionar dia", {
+      data: {
+        action: "fields-for#add",
+        fields: form.fields_for(:days, Day.new, child_index:"new_field"){|day_form| render("days/fields", day_form: day_form)}
+      }
+    }) %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
