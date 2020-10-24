@@ -14,6 +14,7 @@ class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new
     1.times{ @workout.days.build }
+    1.times{ @workout.days[0].exercises.build }
   end
 
   # GET /workouts/1/edit
