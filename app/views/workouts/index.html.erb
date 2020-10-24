@@ -1,29 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Workouts</h1>
+<h1>Treinos cadastrados</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Coach</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @workouts.each do |workout| %>
-      <tr>
-        <td><%= workout.name %></td>
-        <td><%= workout.coach %></td>
-        <td><%= link_to 'Show', workout %></td>
-      </tr>
+<% @workouts.each do |workout| %>
+  <h3>Nome do treino: <%= workout.name %></h1>
+  <p>Treinador: <%= workout.coach %></p>
+  <p>Dias:
+    <% workout.days.each do |day| %>
+      <span><% day.name %></span>
     <% end %>
-  </tbody>
-</table>
+  </p>
+  <%= link_to 'Mostrar', workout %>
+  <hr/>
+<% end %>
 
 <br>
 
-<%= link_to 'New Workout', new_workout_path %>
+<%= link_to 'Novo treino', new_workout_path %>
 <br>
 <%= link_to 'Voltar', root_path %>
