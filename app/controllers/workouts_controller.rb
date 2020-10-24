@@ -1,22 +1,30 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show]
+  before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
+  # GET /workouts
   def index
     @workouts = Workout.all
   end
 
+  # GET /workouts/1
+  def show
+  end
+
+  # GET /workouts/new
   def new
     @workout = Workout.new
     @days = Day.all.pluck(:name, :id)
     1.times{ @workout.days.build }
   end
 
+  # GET /workouts/1/edit
   def edit
-    @days = Day.all.pluck(:name, :id)
   end
 
+  # POST /workouts
   def create
     @workout = Workout.new(workout_params)
+
     if @workout.save
       redirect_to workout_path(@workout), notice: 'Treino cadastrado com sucesso.'
     else
@@ -24,7 +32,19 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def show
+  # PATCH/PUT /workouts/1
+  def update
+    if @workout.update(workout_params)
+      redirect_to @workout, notice: 'Treino atualizado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
+  # DELETE /workouts/1
+  def destroy
+    @workout.destroy
+    redirect_to workout_path(@workout), notice: 'Treino apagado com sucesso.'
   end
 
   private

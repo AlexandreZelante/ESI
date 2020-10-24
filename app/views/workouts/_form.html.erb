@@ -1,28 +1,25 @@
-<%= form_with(model: workout, local: true) do |form| %>
-  <div data-controller="fields-for">
-    <%= form.label :name, "Nome do treino" %>
-    <%= form.text_field :name %>
-
+<%= form_for @workout do |f| %>
+  <div class="field">
+    <%= f.label :name, "Nome do treino" %>
     <br/>
-    <%= form.label :coach, "Nome do treinador" %>
-    <%= form.text_field :coach %>
-
-    <hr/>
-
-    <%= form.fields_for :days do |day_form| %>
-      <%= render "days/fields", day_form: day_form %>
-    <% end %>
-
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :coach, "Nome do treinador" %>
     <br/>
-    <%= button_tag("Adicionar dia", {
-      data: {
-        action: "fields-for#add",
-        fields: form.fields_for(:days, Day.new, child_index:"new_field"){|day_form| render("days/fields", day_form: day_form)}
-      }
-    }) %>
+    <%= f.text_field :coach %>
   </div>
 
-  <%= form.submit %>
-  </br>
+  <h3>Dias</h3>
+  <div id='days'>
+    <%= f.fields_for :days do |day| %>
+      <%= render 'day_fields', :f => day %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Adicionar dia', f, :days %>
+    </div>
+  </div>
+
+  <%= f.submit 'Salvar' %>
   <%= link_to 'Cancelar', workouts_path %>
 <% end %>

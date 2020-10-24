@@ -1,0 +1,11 @@
+<div class='nested-fields'>
+  <div class="field">
+    <%= f.label :name, "Nome do dia" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :exercises, "Exercícios do dia" %>
+    <%= f.text_field :exercises %>
+  </div>
+  <%= link_to_remove_association "Remover dia", f %>
+</div>
