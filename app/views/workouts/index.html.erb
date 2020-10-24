@@ -6,6 +6,7 @@
   <h3>Nome do treino: <%= workout.name %></h1>
   <p>Treinador: <%= workout.coach %></p>
   <%= link_to 'Mostrar', workout %>
+  <%= link_to 'Editar', edit_workout_path(workout) %>
   <hr/>
 <% end %>
 
