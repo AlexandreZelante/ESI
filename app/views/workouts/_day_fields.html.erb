@@ -3,9 +3,16 @@
     <%= f.label :name, "Nome do dia" %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :exercises, "Exercícios do dia" %>
-    <%= f.text_field :exercises %>
+
+  <h3>Exercícios</h3>
+  <div id='exercises'>
+    <%= f.fields_for :exercises do |exercise| %>
+      <%= render 'exercise_fields', :f => exercise %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Adicionar exercício', f, :exercises %>
+    </div>
   </div>
+
   <%= link_to_remove_association "Remover dia", f %>
 </div>

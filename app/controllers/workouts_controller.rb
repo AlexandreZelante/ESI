@@ -13,7 +13,6 @@ class WorkoutsController < ApplicationController
   # GET /workouts/new
   def new
     @workout = Workout.new
-    @days = Day.all.pluck(:name, :id)
     1.times{ @workout.days.build }
   end
 
@@ -54,6 +53,6 @@ class WorkoutsController < ApplicationController
 
     def workout_params
       params.require(:workout)
-        .permit(:name, :coach, days_attributes: [:id, :workout_id, :name, :exercises, :_destroy ])
+        .permit(:name, :coach, days_attributes: [:id, :name, :exercises, :_destroy, exercises_attributes: [:id, :name, :sets, :repetitions, :rest, :_destroy] ])
     end
 end
