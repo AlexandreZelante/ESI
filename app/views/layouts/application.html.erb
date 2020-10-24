@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title><%= content_for?(:title) ? content_for(:title) : "Fábrica de Monstros" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    
   </head>
 
   <body>
