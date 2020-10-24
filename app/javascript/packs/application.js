@@ -19,3 +19,5 @@ require("@nathanvda/cocoon")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
+import "bootstrap"
+import "./src/aplication.scss"
