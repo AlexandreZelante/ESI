@@ -4,6 +4,7 @@
     <title><%= content_for?(:title) ? content_for(:title) : "Fábrica de Monstros" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
