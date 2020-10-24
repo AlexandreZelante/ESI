@@ -1,0 +1,21 @@
+<div class='nested-fields'>
+  <hr>
+  <div class="field">
+    <%= f.label :name, "Nome do exercício" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sets, "Número de sets" %>
+    <%= f.text_field :sets %>
+  </div>
+  <div class="field">
+    <%= f.label :repetitions, "Número de repetições" %>
+    <%= f.text_field :repetitions %>
+  </div>
+  <div class="field">
+    <%= f.label :rest, "Tempo de descanso" %>
+    <%= f.text_field :rest %>
+  </div>
+  <%= link_to_remove_association "Remover exercício", f %>
+  <hr>
+</div>

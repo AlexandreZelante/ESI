@@ -9,7 +9,17 @@
 <% @workout.days.each do |day| %>
   <li>
     <h4>Nome: <%= day.name %></h4>
-    <p>Exercícios: <%= day.exercises %></p>
+    <p>Exercícios:</p>
+    <ul>
+    <% day.exercises.each do |exercise| %>
+      <li>
+        <h4>Nome: <%= exercise.name %></h4>
+        <p>Sets: <%= exercise.sets %></p>
+        <p>Repetições: <%= exercise.repetitions %></p>
+        <p>Descanso: <%= exercise.rest %></p>
+      </li>
+    <% end %>
+    </ul>
   </li>
 <% end %>
 </ul>

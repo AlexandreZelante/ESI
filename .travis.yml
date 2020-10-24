@@ -9,6 +9,7 @@ before_script:
   - psql -c 'create database myapp_development;' -U postgres
   - psql -c 'create database myapp_test;' -U postgres
   - psql -c 'create database myapp_production;' -U postgres
+  - rake db:migrate RAILS_ENV=test
 
 script:
   - bundle exec rake spec

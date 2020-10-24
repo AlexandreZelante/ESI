@@ -5,11 +5,6 @@
 <% @workouts.each do |workout| %>
   <h3>Nome do treino: <%= workout.name %></h1>
   <p>Treinador: <%= workout.coach %></p>
-  <p>Dias:
-    <% workout.days.each do |day| %>
-      <span><% day.name %></span>
-    <% end %>
-  </p>
   <%= link_to 'Mostrar', workout %>
   <hr/>
 <% end %>
