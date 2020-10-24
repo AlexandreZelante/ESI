@@ -1,9 +1,15 @@
+<%- title "Treino #{@workout.name}" %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Treino: <%= @workout.name %></h1>
+<h1>Nome do treino: <%= @workout.name %></h1>
 <h3>Treinador: <%= @workout.coach %></h3>
-<h3>Dias: <%= @workout.days %></h3>
-
-</br>
-<%= link_to 'Novo usuário', new_user_path %>
-
+<h3>Dias:</h3>
+<ul>
+<% @workout.days.each do |day| %>
+  <li>
+    <h4>Nome: <%= day.name %></h4>
+    <p>Exercícios: <%= day.exercises %></p>
+  </li>
+<% end %>
+</ul>
