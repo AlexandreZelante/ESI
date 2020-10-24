@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>batata</h1>
+
 <h1>Cadastrar usuário</h1>
 
 
@@ -9,6 +11,9 @@
   <br/>
   Email<br/>
   <%= users.text_field :email %>
+  <br/>
+  Confirme seu Email<br/>
+  <%= users.text_field :email_confirmation %>
   <br/>
   CPF<br/>
   <%= users.text_field :cpf %>
@@ -26,6 +31,9 @@
   <br/>
   Senha<br/>
   <%= users.password_field :password %>
+  <br/>
+  Confirme sua Senha<br/>
+  <%= users.password_field :password_confirmation %>
   <br/>
   <%= users.submit %>
   <br/>
