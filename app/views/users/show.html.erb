@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @user.name %></h1>
+<ul>
+    <li>Email: <%= @user.email %></li>
+    <li>CPF: <%= @user.cpf %></li>
+    <li>Data de nascimeto: <%= @user.birth_date %></li>
+    <li>Telefone: <%= @user.phone %></li>
+    <li>Gênero: <%= @user.gender %></li>
+</ul>
+
+<br/>
+<%= link_to 'Voltar', users_path %>
