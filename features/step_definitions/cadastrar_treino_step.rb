@@ -22,6 +22,7 @@ Então("ele deve ter sido salvo no banco de dados") do
   workout = Workout.order("id").last
   expect(workout.name).to eq("Maromba")
   expect(workout.coach).to eq("Igor")
+  expect(workout.description).to eq("Treino perfeito para quem quer ficar gigante")
   expect(workout.days[0].name).to eq("Braço")
   expect(workout.days[0].exercises[0].name).to eq("Supino")
   expect(workout.days[0].exercises[0].sets).to eq("3")
