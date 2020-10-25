@@ -2,8 +2,6 @@
 
 <h1>Cadastrar usuário</h1>
 
-<%= @users.errors.messages%>
-
 <%= form_for(@user) do |users| %>
   Nome<br/>
   <%= users.text_field :name %>
