@@ -4,16 +4,16 @@
 
 <%= form_for(@user) do |users| %>
   Nome<br/>
-  <%= users.text_field :name %>
+  <%= users.text_field :name, :class => "form-control", required: true %>
   <br/>
   Email<br/>
-  <%=  users.text_field :email %>
+  <%=  users.text_field :email, :class => "form-control", required: true %>
   <br/>
   Confirme seu Email<br/>
-  <%=  users.text_field :email_confirmation %>
+  <%=  users.text_field :email_confirmation, :class => "form-control", required: true %>
   <br/>
   CPF<br/>
-  <%= users.text_field :cpf %>
+  <%= users.text_field :cpf, :class => "form-control", required: true %>
   <br/>
   Data de nascimento<br/>
   <%= users.date_field :birth_date, as: :date, value: users.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
@@ -27,10 +27,10 @@
     <%= users.radio_button :gender, 'Outro' %> Outro<br />
   <br/>
   Senha<br/>
-  <%= users.password_field :password %>
+  <%= users.password_field :password, :class => "form-control", required: true %>
   <br/>
   Confirme sua senha<br/>
-  <%= users.password_field :password_confirmation %>
+  <%= users.password_field :password_confirmation, :class => "form-control", required: true %>
   <br/>
   <%= users.submit %>
   <br/>
