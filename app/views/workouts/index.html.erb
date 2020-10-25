@@ -1,17 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Treinos cadastrados</h1>
+  <h1>Treinos cadastrados</h1>
+  <br>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Coach</th>
+      <th>Ações<th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td><%= workout.id %></td>
+        <td><%= workout.name %></td>
+        <td><%= workout.coach %></td>
+        <td>
+          <%= link_to 'Mostrar', workout %> / 
+          <%= link_to 'Editar', edit_workout_path(workout) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
 
-<% @workouts.each do |workout| %>
-  <h3>Nome do treino: <%= workout.name %></h1>
-  <p>Treinador: <%= workout.coach %></p>
-  <%= link_to 'Mostrar', workout %>
-  <%= link_to 'Editar', edit_workout_path(workout) %>
-  <hr/>
-<% end %>
+  <br>
 
-<br>
-
-<%= link_to 'Novo treino', new_workout_path %>
-<br>
-<%= link_to 'Voltar', root_path %>
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <%= link_to 'Novo treino', new_workout_path, :class => "btn btn-primary"%>
+    </div>
+    <div class="p-2">
+      <%= link_to 'Voltar', root_path, :class => "btn btn-secondary"%>
+    </div>
+  </div>
+</div>

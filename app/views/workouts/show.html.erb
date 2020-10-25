@@ -1,27 +1,46 @@
-<%- title "Treino #{@workout.name}" %>
+<div class="container">
+  <%- title "Treino #{@workout.name}" %>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>Nome do treino: <%= @workout.name %></h1>
-<h3>Treinador: <%= @workout.coach %></h3>
-<h3>Dias:</h3>
-<ul>
-<% @workout.days.each do |day| %>
-  <li>
-    <h4>Nome: <%= day.name %></h4>
-    <p>Exercícios:</p>
-    <ul>
-    <% day.exercises.each do |exercise| %>
-      <li>
-        <h4>Nome: <%= exercise.name %></h4>
-        <p>Sets: <%= exercise.sets %></p>
-        <p>Repetições: <%= exercise.repetitions %></p>
-        <p>Descanso: <%= exercise.rest %></p>
-      </li>
-    <% end %>
+  <h1>Treino: <%= @workout.name %></h1>
+  <h3>Treinador: <%= @workout.coach %></h3>
+  <hr>
+  <br>
+  <div style="width: 100%">
+    <ul class="list-group list-group-flush">
+      <% @workout.days.each do |day| %>
+        <li class="list-group-item">
+          <h4>Dia: <%= day.name %></h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Exercicio</th>
+                <th>Sets</th>
+                <th>Repetições</th>
+                <th>Descanso<th>
+              </tr>
+            </thead>
+            <tbody>
+              <% day.exercises.each do |exercise| %>
+                <tr>
+                  <td><%= exercise.name %></td>
+                  <td><%= exercise.sets %></td>
+                  <td><%= exercise.repetitions %></td>
+                  <td><%= exercise.rest %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </li>
+        <br>
+      <% end %>
     </ul>
-  </li>
-<% end %>
-</ul>
+  </div>
 
-<%= link_to 'Voltar', workouts_path %>
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <%= link_to 'Voltar', workouts_path, :class => "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

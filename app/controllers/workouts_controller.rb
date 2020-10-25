@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts
   def index
-    @workouts = Workout.all
+    @workouts = Workout.order(:id)
   end
 
   # GET /workouts/1

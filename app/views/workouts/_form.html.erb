@@ -1,27 +1,38 @@
 <%= form_for @workout do |f| %>
-  <div class="field">
-    <%= f.label :name, "Nome do treino" %>
-    <br/>
-    <%= f.text_field :name %>
+  <div class="container">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">
+        <h5><%= f.label :name, "Nome do Treino:" %></h5>
+      </label>
+      <div class="col-sm-6">
+        <%= f.text_field :name, :class => "form-control", required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">
+        <h5><%= f.label :coach, "Nome do Treinador:" %></h5>
+      </label>
+      <div class="col-sm-6">
+        <%= f.text_field :coach, :class => "form-control", required: true %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :coach, "Nome do treinador" %>
-    <br/>
-    <%= f.text_field :coach %>
-  </div>
-
-  <h3>Dias</h3>
+  <br>
   <div id='days'>
     <%= f.fields_for :days do |day| %>
       <%= render 'day_fields', :f => day %>
     <% end %>
     <div class='links'>
-      <%= link_to_add_association 'Adicionar dia', f, :days %>
+      <%= link_to_add_association 'Adicionar dia', f, :days, :class => "text-primary" %>
     </div>
   </div>
 
-  <br>
-  <%= f.submit 'Salvar' %>
-  <br>
-  <%= link_to 'Cancelar', workouts_path %>
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <%= f.submit 'Salvar', :class => "btn btn-primary"%>
+    </div>
+    <div class="p-2">
+      <%= link_to 'Cancelar', workouts_path, :class => "btn btn-secondary"%>
+    </div>
+  </div>
 <% end %>

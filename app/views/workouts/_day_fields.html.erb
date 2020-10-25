@@ -1,18 +1,49 @@
-<div class='nested-fields'>
-  <div class="field">
-    <%= f.label :name, "Nome do dia" %>
-    <%= f.text_field :name %>
-  </div>
-
-  <h3>Exercícios</h3>
-  <div id='exercises'>
-    <%= f.fields_for :exercises do |exercise| %>
-      <%= render 'exercise_fields', :f => exercise %>
-    <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'Adicionar exercício', f, :exercises %>
+<div class='nested-fields container'>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">
+      <h5><%= f.label :name, "Dia:" %></h5>
+    </label>
+    <div class="col-sm-6">
+      <%= f.text_field :name, :class => "form-control sx-9", :placeholder => "Nome do Dia", required: true %>
+    </div>
+    <div class="col-sm-2" style='margin-top: 5px;'>
+      <%= link_to_remove_association "Remover dia", f, :class => "text-danger" %>
     </div>
   </div>
-
-  <%= link_to_remove_association "Remover dia", f %>
+  <div id='exercises'>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Exercício</th>
+          <th scope="col">Séries</th>
+          <th scope="col">Repetições</th>
+          <th scope="col">Descanso</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :exercises do |exercise| %>
+          <%= render 'exercise_fields', :f => exercise %>
+        <% end %>
+        <tr>
+          <td>
+            <%=
+              link_to_add_association 'Adicionar exercício',
+              f,
+              :exercises,
+              "data-association-insertion-method" => "before",
+              "data-association-insertion-traversal" => "closest",
+              "data-association-insertion-node" => "tr",
+              :class => "text-primary"
+            %>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+  </div>
 </div>
