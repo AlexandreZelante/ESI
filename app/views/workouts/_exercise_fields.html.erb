@@ -1,19 +1,23 @@
-<tr class='nested-fields'>
-  <td scope="row">
-    <%= f.text_field :name, :class => "form-control", required: true %>
-  </td>
-  <td>
-    <%= f.text_field :sets, :class => "form-control", required: true %>
-  </td>
-  <td>
-    <%= f.text_field :repetitions, :class => "form-control", required: true %>
-  </td>
-  <td>
-    <%= f.text_field :rest, :class => "form-control", required: true %>
-  </td>
-  <td>
-    <div style='margin-top: 5px;'>
-      <%= link_to_remove_association "Remover exercício", f, class: "text-danger" %>
+<div class="nested-fields row" style="margin-bottom: 5px;">
+  <div class="col-sm-3">
+    <small><%= f.label :name, "Nome do exercício" %></small>
+    <%= f.text_field :name, :class => "form-control form-control-sm", required: true %>
+  </div>
+  <div class="col-sm-2">
+    <small><%= f.label :sets, "Número de séries" %></small>
+    <%= f.text_field :sets, :class => "form-control form-control-sm", required: true %>
+  </div>
+  <div class="col-sm-3">
+    <small><%= f.label :repetitions, "Número de repetições" %></small>
+    <%= f.text_field :repetitions, :class => "form-control form-control-sm", required: true %>
+  </div>
+  <div class="col-sm-2">
+    <small><%= f.label :rest, "Tempo de descanso" %></small>
+    <%= f.text_field :rest, :class => "form-control form-control-sm", required: true %>
+  </div>
+  <div class="col-sm-2">
+    <div style="margin-top: 30px;">
+      <small><%= link_to_remove_association "Remover exercício", f, class: "text-danger" %></small>
     </div>
-  </td>
-</tr>
+  </div>
+</div>

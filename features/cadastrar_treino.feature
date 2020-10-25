@@ -11,7 +11,7 @@ Quando preencho o campo "Nome do treino" com "Maromba"
 E preencho o campo "Nome do treinador" com "Igor"
 E preencho o campo "Nome do dia" com "Braço"
 E preencho o campo "Nome do exercício" com "Supino"
-E preencho o campo "Número de sets" com "3"
+E preencho o campo "Número de séries" com "3"
 E preencho o campo "Número de repetições" com "15"
 E preencho o campo "Tempo de descanso" com "30s"
 E clico em salvar
