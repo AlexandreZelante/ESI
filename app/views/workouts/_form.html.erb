@@ -1,38 +1,37 @@
 <%= form_for @workout do |f| %>
   <div class="container">
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label">
-        <h5><%= f.label :name, "Nome do Treino:" %></h5>
-      </label>
       <div class="col-sm-6">
+        <%= f.label :name, "Nome do treino" %>
         <%= f.text_field :name, :class => "form-control", required: true %>
       </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-3 col-form-label">
-        <h5><%= f.label :coach, "Nome do Treinador:" %></h5>
-      </label>
       <div class="col-sm-6">
+        <%= f.label :coach, "Nome do treinador" %>
         <%= f.text_field :coach, :class => "form-control", required: true %>
       </div>
     </div>
   </div>
+
   <br>
-  <div id='days'>
+  <h3>Dias de treino</h3>
+  <hr>
+  <br>
+
+  <div id="days">
     <%= f.fields_for :days do |day| %>
-      <%= render 'day_fields', :f => day %>
+      <%= render "day_fields", :f => day %>
     <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'Adicionar dia', f, :days, :class => "text-primary" %>
+    <div>
+      <%= link_to_add_association "Adicionar novo dia", f, :days, :class => "text-primary" %>
     </div>
   </div>
 
   <div class="d-flex flex-row-reverse">
     <div class="p-2">
-      <%= f.submit 'Salvar', :class => "btn btn-primary"%>
+      <%= f.submit "Salvar", :class => "btn btn-primary"%>
     </div>
     <div class="p-2">
-      <%= link_to 'Cancelar', workouts_path, :class => "btn btn-secondary"%>
+      <%= link_to "Cancelar", workouts_path, :class => "btn btn-secondary"%>
     </div>
   </div>
 <% end %>
