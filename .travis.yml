@@ -5,11 +5,16 @@ rvm:
 services:
   - postgresql
 
+before_install:
+  - nvm install 14
+
 before_script:
   - psql -c 'create database myapp_development;' -U postgres
   - psql -c 'create database myapp_test;' -U postgres
   - psql -c 'create database myapp_production;' -U postgres
   - rake db:migrate RAILS_ENV=test
+  - yarn install
+  - NODE_ENV=test bundle exec rails webpacker:compile
 
 script:
   - bundle exec rake spec

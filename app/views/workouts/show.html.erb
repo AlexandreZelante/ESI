@@ -1,25 +1,52 @@
-<%- title "Treino #{@workout.name}" %>
+<div class="container">
+  <%- title "#{@workout.name}" %>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>Nome do treino: <%= @workout.name %></h1>
-<h3>Treinador: <%= @workout.coach %></h3>
-<h3>Dias:</h3>
-<ul>
-<% @workout.days.each do |day| %>
-  <li>
-    <h4>Nome: <%= day.name %></h4>
-    <p>Exercícios:</p>
-    <ul>
-    <% day.exercises.each do |exercise| %>
-      <li>
-        <h4>Nome: <%= exercise.name %></h4>
-        <p>Sets: <%= exercise.sets %></p>
-        <p>Repetições: <%= exercise.repetitions %></p>
-        <p>Descanso: <%= exercise.rest %></p>
-      </li>
-    <% end %>
-    </ul>
-  </li>
-<% end %>
-</ul>
+  <h1><%= @workout.name %></h1>
+  <h5>Treinador: <%= @workout.coach %></h5>
+  <p><%= simple_format(@workout.description) %></p>
+  <hr>
+  <br>
+
+  <% @workout.days.each do |day| %>
+    <div class="card">
+      <div class="card-header">
+        <h5><%= day.name %></h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <% day.exercises.each do |exercise| %>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-sm-3">
+                  <small>EXERCÍCIO</small>
+                  <p><%= exercise.name %></p>
+                </div>
+                <div class="col-sm-3">
+                  <small>SÉRIES</small>
+                  <p><%= exercise.sets %></p>
+                </div>
+                <div class="col-sm-3">
+                  <small>REPETIÇÕES</small>
+                  <p><%= exercise.repetitions %></p>
+                </div>
+                <div class="col-sm-3">
+                  <small>DESCANSO</small>
+                  <p><%= exercise.rest %></p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <br>
+  <% end %>
+
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <%= link_to 'Voltar', workouts_path, :class => "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
