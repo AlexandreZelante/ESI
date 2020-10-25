@@ -2,7 +2,7 @@
 
 <h1>Cadastrar usuário</h1>
 
-<%= form_with scope: :user, local: true do |users| %>
+<%= form_for(@user) do |users| %>
   Nome<br/>
   <%= users.text_field :name %>
   <br/>
