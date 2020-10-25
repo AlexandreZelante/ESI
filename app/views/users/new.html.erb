@@ -29,6 +29,9 @@
   Senha<br/>
   <%= users.password_field :password %>
   <br/>
+  Confirme sua senha<br/>
+  <%= users.password_field :password_confirmation %>
+  <br/>
   <%= users.submit %>
   <br/>
   <%= link_to 'Cancelar', users_path %>
