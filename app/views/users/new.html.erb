@@ -11,7 +11,7 @@
   <%= text_field :user, :email %>
   <br/>
   CPF<br/>
-  <%= users.text_field :user, :cpf %>
+  <%= users.text_field :cpf %>
   <br/>
   Data de nascimento<br/>
   <%= users.date_field :birth_date, as: :date, value: users.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
