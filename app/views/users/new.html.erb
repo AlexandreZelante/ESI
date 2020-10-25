@@ -2,7 +2,7 @@
 
 <h1>Cadastrar usuário</h1>
 
-<%= form_for(@user) do |users| %>
+<%= form_with scope: :user, local: true do |users| %>
   Nome<br/>
   <%= users.text_field :name %>
   <br/>
@@ -10,7 +10,7 @@
   <%=  users.text_field :email %>
   <br/>
   Confirme seu Email<br/>
-  <%=  text_field :users, :email_confirmation %>
+  <%=  users.text_field :email_confirmation %>
   <br/>
   CPF<br/>
   <%= users.text_field :cpf %>
