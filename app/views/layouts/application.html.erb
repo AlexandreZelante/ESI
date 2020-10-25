@@ -23,6 +23,15 @@
           <li class="nav-item">
             <%= link_to 'Usuários', users_path, :class => "nav-link" %>
           </li>
+          <% if logged_in? %>
+            <h1>Bem vindo, <%= session[:username] %></h1>
+            <li><%= link_to "Profile", current_user %></li>
+            <li>
+              <%= link_to "Log out", sign_out_path %>
+            </li>
+          <% else %>
+            <li><%= link_to "Log in", sign_in_path %></li>
+          <% end %>
         </ul>
       </div>
     </nav>
