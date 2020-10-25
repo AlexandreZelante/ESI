@@ -1,42 +1,48 @@
 <div class="container">
-  <%- title "Treino #{@workout.name}" %>
+  <%- title "#{@workout.name}" %>
 
   <p id="notice"><%= notice %></p>
 
-  <h1>Treino: <%= @workout.name %></h1>
-  <h3>Treinador: <%= @workout.coach %></h3>
+  <h1><%= @workout.name %></h1>
+  <h5>Treinador: <%= @workout.coach %></h5>
+  <p><%= simple_format(@workout.description) %></p>
   <hr>
   <br>
-  <div style="width: 100%">
-    <ul class="list-group list-group-flush">
-      <% @workout.days.each do |day| %>
-        <li class="list-group-item">
-          <h4>Dia: <%= day.name %></h4>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Exercicio</th>
-                <th>Sets</th>
-                <th>Repetições</th>
-                <th>Descanso<th>
-              </tr>
-            </thead>
-            <tbody>
-              <% day.exercises.each do |exercise| %>
-                <tr>
-                  <td><%= exercise.name %></td>
-                  <td><%= exercise.sets %></td>
-                  <td><%= exercise.repetitions %></td>
-                  <td><%= exercise.rest %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </li>
-        <br>
-      <% end %>
-    </ul>
-  </div>
+
+  <% @workout.days.each do |day| %>
+    <div class="card">
+      <div class="card-header">
+        <h5><%= day.name %></h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <% day.exercises.each do |exercise| %>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-sm-3">
+                  <small>EXERCÍCIO</small>
+                  <p><%= exercise.name %></p>
+                </div>
+                <div class="col-sm-3">
+                  <small>SÉRIES</small>
+                  <p><%= exercise.sets %></p>
+                </div>
+                <div class="col-sm-3">
+                  <small>REPETIÇÕES</small>
+                  <p><%= exercise.repetitions %></p>
+                </div>
+                <div class="col-sm-3">
+                  <small>DESCANSO</small>
+                  <p><%= exercise.rest %></p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <br>
+  <% end %>
 
   <div class="d-flex flex-row-reverse">
     <div class="p-2">

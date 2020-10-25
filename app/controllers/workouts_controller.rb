@@ -54,6 +54,6 @@ class WorkoutsController < ApplicationController
 
     def workout_params
       params.require(:workout)
-        .permit(:name, :coach, days_attributes: [:id, :name, :exercises, :_destroy, exercises_attributes: [:id, :name, :sets, :repetitions, :rest, :_destroy] ])
+        .permit(:name, :coach, :description, days_attributes: [:id, :name, :exercises, :_destroy, exercises_attributes: [:id, :name, :sets, :repetitions, :rest, :_destroy] ])
     end
 end
