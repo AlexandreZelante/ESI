@@ -24,13 +24,16 @@
             <%= link_to 'Usuários', users_path, :class => "nav-link" %>
           </li>
           <% if logged_in? %>
-            <h1>Bem vindo, <%= session[:username] %></h1>
-            <li><%= link_to "Profile", current_user %></li>
-            <li>
-              <%= link_to "Log out", sign_out_path %>
+            <li class="nav-item">
+              <%= link_to "Perfil", current_user, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sair", sign_out_path, :class => "nav-link" %>
             </li>
           <% else %>
-            <li><%= link_to "Log in", sign_in_path %></li>
+            <li class="nav-item">
+              <%= link_to "Entrar", sign_in_path, :class => "nav-link" %>
+            </li>
           <% end %>
         </ul>
       </div>
