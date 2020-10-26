@@ -13,13 +13,13 @@
   <%=  users.text_field :email_confirmation, required: true %>
   <br/>
   CPF<br/>
-  <%= users.text_field :cpf, required: true %>
+  <%= users.text_field :cpf, required: true, numericality: { only_integer: true } %>
   <br/>
   Data de nascimento<br/>
   <%= users.date_field :birth_date, as: :date, value: users.object.try(:strftime,"%m/%d/%Y"), class: 'form-control', required: true %>
   <br/>
   Telefone<br/>
-  <%= users.text_field :phone, required: true %>
+  <%= users.text_field :phone, required: true, numericality: { only_integer: true } %>
   <br/>
   Gênero<br/>
     <%= users.radio_button :gender, 'Masculino' %> Masculino<br />
