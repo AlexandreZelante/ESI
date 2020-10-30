@@ -1,40 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="100rem">
+  <p id="notice"><%= notice %></p>
 
-<h1>Cadastrar usuário</h1>
+  <h1>Cadastre-se</h1>
+  <hr>
+  <br>
+  <%= render 'form', user: @user %>
+</div>
 
-<%= form_for(@user) do |users| %>
-  Nome<br/>
-  <%= users.text_field :name, required: true %>
-  <br/>
-  Email<br/>
-  <%=  users.text_field :email, required: true %>
-  <br/>
-  Confirme seu Email<br/>
-  <%=  users.text_field :email_confirmation, required: true %>
-  <br/>
-  CPF<br/>
-  <%= users.text_field :cpf, required: true, numericality: { only_integer: true } %>
-  <br/>
-  Data de nascimento<br/>
-  <%= users.date_field :birth_date, as: :date, value: users.object.try(:strftime,"%m/%d/%Y"), class: 'form-control', required: true %>
-  <br/>
-  Telefone<br/>
-  <%= users.text_field :phone, required: true, numericality: { only_integer: true } %>
-  <br/>
-  Gênero<br/>
-    <%= users.radio_button :gender, 'Masculino' %> Masculino<br />
-    <%= users.radio_button :gender, 'Feminino' %> Feminino<br />
-    <%= users.radio_button :gender, 'Outro' %> Outro<br />
-  <br/>
-  Senha<br/>
-  <%= users.password_field :password, required: true %>
-  <br/>
-  Confirme sua senha<br/>
-  <%= users.password_field :password_confirmation, required: true %>
-  <br/>
-  <%= users.submit %>
-  <br/>
-  <%= link_to 'Cancelar', users_path %>
-<% end %>
-
-<br>
