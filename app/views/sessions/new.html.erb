@@ -4,14 +4,14 @@
       <form class="px-4 py-3">
         <div class="field">
           <h6 class="card-title" style="margin: 0px;"><%= f.label :email, "Email" %></h6>
-          <%= f.email_field :email, autofocus: true, :class => "form-control", placeholder: "Email" %>
+          <%= f.email_field :email, autofocus: true %>
         </div>
 
         </br>
         
         <div class="field">
-          <h6 class="card-title" style="margin: 0px;"><%= f.label :password, "Senha" %></h6>
-          <%= f.password_field :password, autocomplete: "off", :class => "form-control", placeholder: "Senha"  %>
+          <h6 class="card-title" style="margin: 0px;"><%= f.label :password, "Senha" %></h6> 
+          <%= f.password_field :password, autocomplete: "off" %>
         </div>
       </form>
       <div class="dropdown-divider"></div>
