@@ -2,19 +2,19 @@
   <div class="card-body">
     <%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
       <div class="field">
-        <h6><%= f.label :email, "Email"%></h6>
+        <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true %>
       </div>
-
+    
       <div class="field">
-        <h6><%= f.label :password, "Senha"%></h6>
+        <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
-
+    
       <div class="actions">
         <%= f.submit "login" %>
       </div>
-
+      
       <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
     <% end %>
   </div>
