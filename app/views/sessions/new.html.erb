@@ -3,20 +3,28 @@
     <%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
       <form class="px-4 py-3">
         <div class="field">
+          <div class="field">
           <h6 class="card-title" style="margin: 0px;"><%= f.label :email, "Email" %></h6>
-          <%= f.email_field :email, autofocus: true %>
-        </div>
+            <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+          </div>
 
-        </br>
-        
-        <div class="field">
+          </br>
+
+          <div class="field">
           <h6 class="card-title" style="margin: 0px;"><%= f.label :password, "Senha" %></h6> 
-          <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+          </div>
+
+          <div class="dropdown-divider"></div>
+
+          <div class="actions">
+            <%= f.submit "Login", :class => "btn btn-primary" %>
+          </div>
+          
+          <p>Novo aqui? <%= link_to "Registre-se agora!", new_user_path %></p>
+
         </div>
       </form>
-      <div class="dropdown-divider"></div>
-      <div class="actions"><%= f.submit "Login", :class => "btn btn-primary" %></div>
-      <p>Novo aqui? <%= link_to "Registre-se agora!", new_user_path %></p>
     <% end %>
   </div>
 </div>
