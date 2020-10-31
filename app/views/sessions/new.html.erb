@@ -2,14 +2,14 @@
   <div class="card-body">
     <%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email, class: "card-title" %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
     
       </br>
 
       <div class="field">
-        <%= f.label :password %><br />
+        <%= f.label :password, class: "card-title" %>
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>
     
