@@ -6,15 +6,19 @@
         <%= f.email_field :email, autofocus: true %>
       </div>
     
+      </br>
+
       <div class="field">
         <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
     
+      <div class="dropdown-divider"></div>
+
       <div class="actions">
         <%= f.submit "login" %>
       </div>
-      
+
       <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
     <% end %>
   </div>
