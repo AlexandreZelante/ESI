@@ -1,16 +1,21 @@
-<%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class="card" style="margin:auto; margin-top: 15vmin; width: 20rem;">  
+  <div class="card-body">
+    <%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "login" %>
+      <div class="actions">
+        <%= f.submit "login" %>
+      </div>
+
+      <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+    <% end %>
   </div>
-<p>New user? <%= link_to "Sign up now!", new_user_path %></p>
-<% end %>
+</div>
