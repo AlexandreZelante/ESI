@@ -7,11 +7,21 @@
         <div class="form-group row">
             <div class="col-sm-6">
                 Email<br/>
-                <%=  users.text_field :email, required: true, :class => "form-control" %>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <%=  users.text_field :email, required: true, :class => "form-control" %>
+                </div>
             </div>
             <div class="col-sm-6">
                 Confirme seu Email<br/>
-                <%=  users.text_field :email_confirmation, required: true, :class => "form-control" %>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <%=  users.text_field :email_confirmation, required: true, :class => "form-control" %>
+                </div>
             </div>
         </div>
 
