@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit.git
+  revision: f429d668568ff7349f5e23a085df7fcf1c431fa7
+  branch: master
+  specs:
+    capybara-webkit (1.15.1)
+      capybara (>= 2.3, < 4.0)
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -123,6 +132,11 @@ GEM
     diff-lcs (1.4.4)
     docile (1.3.2)
     erubi (1.9.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -297,10 +311,12 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  capybara-webkit!
   cocoon
   coveralls
   cucumber-rails
   database_cleaner
+  factory_bot_rails
   jasmine
   jbuilder (~> 2.7)
   listen (~> 3.2)

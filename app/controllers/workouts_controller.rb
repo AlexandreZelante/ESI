@@ -26,7 +26,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
 
     if @workout.save
-      redirect_to workout_path(@workout), notice: 'Treino cadastrado com sucesso.'
+      redirect_to workout_path(@workout), success: 'Treino cadastrado com sucesso.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class WorkoutsController < ApplicationController
   # PATCH/PUT /workouts/1
   def update
     if @workout.update(workout_params)
-      redirect_to @workout, notice: 'Treino atualizado com sucesso.'
+      redirect_to @workout, success: 'Treino atualizado com sucesso.'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class WorkoutsController < ApplicationController
   # DELETE /workouts/1
   def destroy
     @workout.destroy
-    redirect_to workout_path(@workout), notice: 'Treino apagado com sucesso.'
+    redirect_to workout_path(@workout), warning: 'Treino apagado com sucesso.'
   end
 
   private

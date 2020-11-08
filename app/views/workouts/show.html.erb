@@ -1,11 +1,25 @@
 <div class="container">
   <%- title "#{@workout.name}" %>
 
-  <p id="notice"><%= notice %></p>
+  <br/>
 
-  <h1><%= @workout.name %></h1>
+  <h1>
+    <%= @workout.name %>
+    <%- if current_user && current_user.saved_workouts.exists?(workout_id: @workout.id) -%>
+      <small><span class="badge badge-warning">Favorito</span></small>
+    <%- end -%>
+  </h1>
   <h5>Treinador: <%= @workout.coach %></h5>
   <p><%= simple_format(@workout.description) %></p>
+
+  <% if logged_in? %>
+    <%- unless current_user.saved_workouts.exists?(workout_id: @workout.id) -%>
+      <%= button_to 'Favoritar', saved_workouts_path(workout_id: @workout.id), method: :post, :class => 'btn btn-warning' %>
+    <%- else -%>
+      <%= button_to 'Remover', saved_workout_path(id: @workout.id), method: :delete, :class => 'btn btn-secondary' %>
+    <%- end -%>
+  <%- end -%>
+
   <hr>
   <br>
 
