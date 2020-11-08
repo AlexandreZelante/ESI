@@ -18,4 +18,4 @@ before_script:
 
 script:
   - bundle exec rake spec
-  - bundle exec rake cucumber
+  - xvfb-run -a bundle exec rake cucumber

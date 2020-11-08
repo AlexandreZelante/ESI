@@ -1,5 +1,6 @@
 FROM ruby:2.7.1
 RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client
+RUN apt-get install -y libqt5webkit5 libqtwebkit-dev xvfb
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
@@ -7,6 +8,7 @@ RUN bundle install
 COPY . /myapp
 
 RUN npm install -g yarn
+RUN yarn install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
