@@ -6,10 +6,13 @@ class Workout < ApplicationRecord
   validates :coach, presence: true
 
   def self.search(search)
-    if search 
+    if search
       where(["name ILIKE ?","%#{search}%"])
     else
       all
     end
   end
+
+  has_many :saved_workouts
+  has_many :saved_by, through: :saved_workouts, source: :user
 end
