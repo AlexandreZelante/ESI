@@ -48,3 +48,7 @@ Então("ele não deve aparecer na lista de favoritos") do
   expect(page).to have_no_content('Treino avançado')
   expect(page).to have_no_content('Coach Igor')
 end
+
+Então("não deve haver a opção de favoritar") do
+  expect(page).to have_no_content('Favoritar')
+end

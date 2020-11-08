@@ -22,3 +22,8 @@ Cenário: Desfavoritar treino com sucesso
   Então ele deve aparecer na lista de favoritos
   E clico em Desfavoritar
   Então ele não deve aparecer na lista de favoritos
+
+Cenário: Tentar favoritar sem estar logado
+  Dado que eu tenho um treino cadastrado
+  Dado que estou na página de um treino
+  Então não deve haver a opção de favoritar
