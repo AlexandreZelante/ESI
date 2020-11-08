@@ -4,4 +4,7 @@ class Workout < ApplicationRecord
 
   validates :name, presence: true
   validates :coach, presence: true
+
+  has_many :saved_workouts
+  has_many :saved_by, through: :saved_workouts, source: :user
 end

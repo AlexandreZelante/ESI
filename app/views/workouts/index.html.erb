@@ -4,27 +4,34 @@
   <h1>Treinos cadastrados</h1>
   <br>
   <table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nome</th>
-      <th>Coach</th>
-      <th>Ações<th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workouts.each do |workout| %>
+    <thead>
       <tr>
-        <td><%= workout.id %></td>
-        <td><%= workout.name %></td>
-        <td><%= workout.coach %></td>
-        <td>
-          <%= link_to 'Mostrar', workout %> / 
-          <%= link_to 'Editar', edit_workout_path(workout) %>
-        </td>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Coach</th>
+        <th>Ações<th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @workouts.each do |workout| %>
+        <tr>
+          <td><%= workout.id %></td>
+          <td><%= workout.name %></td>
+          <td><%= workout.coach %></td>
+          <td>
+            <%= link_to 'Mostrar', workout, :class => 'btn btn-link p-0' %> /
+            <%= link_to 'Editar', edit_workout_path(workout), :class => 'btn btn-link p-0' %>
+            <% if logged_in? %> /
+              <%- unless current_user.saved_workouts.exists?(workout_id: workout.id) -%>
+                <%= button_to 'Favoritar', saved_workouts_path(workout_id: workout.id), method: :post, :class => 'btn btn-link p-0', form: {style: 'display:inline-block'} %>
+              <%- else -%>
+                <%= button_to 'Desfavoritar', saved_workout_path(id: workout.id), method: :delete, :class => 'btn btn-link p-0', form: {style: 'display:inline-block;'} %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
   <br>

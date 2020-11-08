@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_10_25_182757) do
-=======
-ActiveRecord::Schema.define(version: 2020_10_25_220422) do
->>>>>>> feat: add login page with authentication
+ActiveRecord::Schema.define(version: 2020_11_07_230952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +22,21 @@ ActiveRecord::Schema.define(version: 2020_10_25_220422) do
   end
 
   create_table "exercises", force: :cascade do |t|
-<<<<<<< HEAD
     t.string "name", null: false
     t.string "sets", null: false
     t.string "repetitions", null: false
     t.string "rest", null: false
-=======
-    t.string "name"
-    t.string "sets"
-    t.string "repetitions"
-    t.string "rest"
->>>>>>> feat: add login page with authentication
     t.bigint "day_id", null: false
     t.index ["day_id"], name: "index_exercises_on_day_id"
+  end
+
+  create_table "saved_workouts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "workout_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_saved_workouts_on_user_id"
+    t.index ["workout_id"], name: "index_saved_workouts_on_workout_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_10_25_220422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.integer "saved_workouts_count"
   end
 
   create_table "workouts", force: :cascade do |t|
@@ -60,8 +59,11 @@ ActiveRecord::Schema.define(version: 2020_10_25_220422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
+    t.integer "saved_workouts_count"
   end
 
   add_foreign_key "days", "workouts"
   add_foreign_key "exercises", "days"
+  add_foreign_key "saved_workouts", "users"
+  add_foreign_key "saved_workouts", "workouts"
 end
