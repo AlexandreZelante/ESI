@@ -1,6 +1,6 @@
 FROM ruby:2.7.1
 RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client
-RUN apt-get install -y libqt5webkit5 libqtwebkit-dev xvfb
+RUN apt-get install -y g++ qt5-default libqt5-dev libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x xvfb
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
