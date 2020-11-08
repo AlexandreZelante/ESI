@@ -4,4 +4,12 @@ class Workout < ApplicationRecord
 
   validates :name, presence: true
   validates :coach, presence: true
+
+  def self.search(search)
+    if search 
+      where(["name ILIKE ?","%#{search}%"])
+    else
+      all
+    end
+  end
 end

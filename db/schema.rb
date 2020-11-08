@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_10_25_182757) do
-=======
 ActiveRecord::Schema.define(version: 2020_10_25_220422) do
->>>>>>> feat: add login page with authentication
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,17 +22,10 @@ ActiveRecord::Schema.define(version: 2020_10_25_220422) do
   end
 
   create_table "exercises", force: :cascade do |t|
-<<<<<<< HEAD
     t.string "name", null: false
     t.string "sets", null: false
     t.string "repetitions", null: false
     t.string "rest", null: false
-=======
-    t.string "name"
-    t.string "sets"
-    t.string "repetitions"
-    t.string "rest"
->>>>>>> feat: add login page with authentication
     t.bigint "day_id", null: false
     t.index ["day_id"], name: "index_exercises_on_day_id"
   end

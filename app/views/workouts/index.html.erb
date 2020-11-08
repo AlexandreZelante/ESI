@@ -1,7 +1,19 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1>Treinos cadastrados</h1>
+  <div class="d-flex">
+    <div class="col col-lg-6">
+      <h1>Treinos cadastrados</h1>
+    </div>
+    <div class="col col-lg-6 mt-2">
+      <%= form_with(url: '/workouts', method: 'get', local: true, class: "input-group") do %>
+        <%= text_field_tag(:name, '', { class: "form-control", placeholder: "...", id: "search-field" }) %>
+        <div class="input-group-append">
+          <%= submit_tag("Buscar", { name: nil, class: "btn btn-secondary", id: "search-button" }) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <br>
   <table class="table">
   <thead>
@@ -14,7 +26,7 @@
   </thead>
   <tbody>
     <% @workouts.each do |workout| %>
-      <tr>
+      <tr data-workout-name="<%= workout.name %>" >
         <td><%= workout.id %></td>
         <td><%= workout.name %></td>
         <td><%= workout.coach %></td>
@@ -22,6 +34,12 @@
           <%= link_to 'Mostrar', workout %> / 
           <%= link_to 'Editar', edit_workout_path(workout) %>
         </td>
+      </tr>
+    <% end %>
+    <% if @workouts.length === 0 %>
+      <tr id="no_workout_text">
+        <td></td>
+        <td>Nenhum Treino encontrado</td>
       </tr>
     <% end %>
   </tbody>
