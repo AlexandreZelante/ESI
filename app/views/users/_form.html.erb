@@ -1,12 +1,12 @@
 <%= form_for(@user) do |users| %>
     <div class="container" style="100rem">
-        Nome<br/>
+        <%= users.label :name, "Nome" %><br/>
         <%= users.text_field :name, required: true, :class => "form-control" %>
         <br/>
 
         <div class="form-group row">
             <div class="col-sm-6">
-                Email<br/>
+                <%= users.label :email, "Email" %><br/>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@</span>
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                Confirme seu Email<br/>
+                <%= users.label :email_confirmation, "Confirme seu Email" %><br/>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">@</span>
@@ -27,33 +27,33 @@
 
         <div class="form-group row">
             <div class="col-sm-6">
-                CPF<br/>
+                <%= users.label :cpf, "CPF" %><br/>
                 <%= users.text_field :cpf, required: true, numericality: { only_integer: true }, :class => "form-control" %>
             </div>
             <div class="col-sm-6">
-                Data de nascimento<br/>
+                <%= users.label :birth_date, "Data de nascimento" %><br/>
                 <%= users.date_field :birth_date, as: :date, value: users.object.try(:strftime,"%m/%d/%Y"), :class => "form-control", required: true %>
             </div>
         </div>
 
         <div class="form-group row">
             <div class="col-sm-6">
-                Telefone<br/>
+                <%= users.label :phone, "Telefone" %><br/>
                 <%= users.text_field :phone, required: true, numericality: { only_integer: true }, :class => "form-control" %>
             </div>
             <div class="col-sm-6">
-                Gênero<br/>
+                <%= users.label :gender, "Gênero" %><br/>
                 <%= users.select :gender, ['Masculino', 'Feminino', 'Outro'], :class => "btn btn-secondary dropdown-toggle" %>
             </div>
         </div>
 
         <div class="form-group row">
             <div class="col-sm-6">
-                Senha<br/>
+                <%= users.label :password, "Senha" %><br/>
                 <%= users.password_field :password, required: true, :class => "form-control" %>
             </div>
             <div class="col-sm-6">
-                Confirme sua senha<br/>
+                <%= users.label :password_confirmation, "Confirme sua senha" %><br/>
                 <%= users.password_field :password_confirmation, required: true, :class => "form-control" %>
             </div>
         </div>
