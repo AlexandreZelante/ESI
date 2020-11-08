@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'cocoon'
+gem 'zeitwerk', '~> 2.4', '>= 2.4.1'
+gem 'tzinfo', '~> 1.2', '>= 1.2.8'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
