@@ -26,25 +26,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @workouts.each do |workout| %>
-      <tr data-workout-name="<%= workout.name %>" >
-        <td><%= workout.id %></td>
-        <td><%= workout.name %></td>
-        <td><%= workout.coach %></td>
-        <% if logged_in? %>
-          <td>
-            <%= link_to 'Mostrar', workout %> / 
-            <%= link_to 'Editar', edit_workout_path(workout) %>
-          </td>
-        <% else %>
-          <td>
-            <div>
-              <%= link_to "Entre", sign_in_path %> para visualizar
-            </div>
-          </td>
-        <% end %>
-      </tr>
-    </thead>
     <tbody>
       <% @workouts.each do |workout| %>
         <tr data-workout-name="<%= workout.name %>" >
@@ -52,8 +33,12 @@
           <td><%= workout.name %></td>
           <td><%= workout.coach %></td>
           <td>
-            <%= link_to 'Mostrar', workout, :class => 'btn btn-link p-0' %> /
-            <%= link_to 'Editar', edit_workout_path(workout), :class => 'btn btn-link p-0' %>
+            <% if logged_in? %>
+              <%= link_to 'Mostrar', workout, :class => 'btn btn-link p-0' %> /
+              <%= link_to 'Editar', edit_workout_path(workout), :class => 'btn btn-link p-0' %>
+            <% else %>
+              <%= link_to "Entre para visualizar", sign_in_path, :class => 'btn btn-link p-0' %>
+            <% end %>
             <% if logged_in? %> /
               <%- unless current_user.saved_workouts.exists?(workout_id: workout.id) -%>
                 <%= button_to 'Favoritar', saved_workouts_path(workout_id: workout.id), method: :post, :class => 'btn btn-link p-0', form: {style: 'display:inline-block'} %>
@@ -87,7 +72,7 @@
         </div>
       </td>
     <% end %>
-    
+
     <div class="p-2">
       <%= link_to 'Voltar', root_path, :class => "btn btn-secondary"%>
     </div>
