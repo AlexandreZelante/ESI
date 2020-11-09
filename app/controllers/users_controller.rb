@@ -35,14 +35,29 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:success] = "Confirme seu email antes de acessar"
+        redirect_to root_url
+        #format.html { redirect_to @user, notice: 'User was successfully created.' }
+        #format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end 
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Email confirmado com sucesso!"
+      redirect_to signin_url
+    else
+      flash[:error] = "Falha na confirmação! Usuário não existe!"
+      redirect_to root_url
+    end
+  end
 
   def new
     @user = User.new
