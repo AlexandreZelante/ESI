@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	before_create do |user|#:create_confirmation_token
-		if self.confirm_token.blank?
-            self.confirm_token = SecureRandom.urlsafe_base64.to_s
+		if user.confirm_token.blank?
+            user.confirm_token = SecureRandom.urlsafe_base64.to_s
         end
     end
 
