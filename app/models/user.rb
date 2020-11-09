@@ -1,9 +1,5 @@
 class User < ActiveRecord::Base
-	before_create do |users|#:create_confirmation_token
-		if users.confirm_token.blank?
-            users.confirm_token = SecureRandom.urlsafe_base64.to_s
-        end
-    end
+	before_create :create_confirmation_token
 
 	validates :email, confirmation: true
 	validates :password, confirmation: true
@@ -21,10 +17,10 @@ class User < ActiveRecord::Base
 	    save!(:validate => false)
 	end
 
-	#private
-	#def create_confirmation_token
-    #    if self.confirm_token.blank?
-    #        self.confirm_token = SecureRandom.urlsafe_base64.to_s
-    #    end
-    #end
+	private
+	def create_confirmation_token
+        if confirm_token.nil?
+            self.confirm_token = SecureRandom.urlsafe_base64.to_s
+        end
+    end
 end
