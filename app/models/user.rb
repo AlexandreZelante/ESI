@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
 	end
 
 	private
-	def create_confirmation_token
-        if confirm_token.blank?
-            confirm_token = SecureRandom.urlsafe_base64.to_s
+	def self.create_confirmation_token
+        if self.confirm_token.blank?
+            self.confirm_token = SecureRandom.urlsafe_base64.to_s
         end
     end
 end
