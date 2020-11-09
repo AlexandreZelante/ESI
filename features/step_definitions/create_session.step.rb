@@ -6,7 +6,8 @@ Dado("que eu estou registrado") do
   fill_in "CPF", :with => "123"
   fill_in "Data de nascimento", :with => "22/12/1999"
   fill_in "Telefone", :with => "1111111111"
-  find('select').find(:xpath, 'option[1]').select_option
+  find('#user_gender').find(:xpath, 'option[1]').select_option
+  find('#user_category').find(:xpath, 'option[1]').select_option
   fill_in "Senha", :with => "password"
   fill_in "Confirme sua senha", :with => "password"
   click_on "Salvar"
