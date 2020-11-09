@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_230952) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.integer "saved_workouts_count"
+    t.string : categoria
   end
 
   create_table "workouts", force: :cascade do |t|
