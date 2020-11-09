@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	before_create :confirmation_token
+	before_create :confirm_token
 
 	validates :email, confirmation: true
 	validates :password, confirmation: true
