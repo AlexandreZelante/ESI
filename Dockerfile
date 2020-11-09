@@ -9,7 +9,7 @@ RUN apt-get install -y libpq-dev postgresql-client
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
 # for capybara-webkit
-RUN apt-get install -y libqt5webkit5 libqt5webkit5-dev xvfb
+RUN apt-get install -y libqt5webkit5 libqt5webkit5-dev xvfb qt5-default
 
 # for a JS runtime
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
