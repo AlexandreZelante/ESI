@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	before_create :confirmation_token
+	before_create :create_confirmation_token
 
 	validates :email, confirmation: true
 	validates :password, confirmation: true
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 	end
 
 	private
-	def confirmation_token
+	def create_confirmation_token
         if self.confirm_token.blank?
             self.confirm_token = SecureRandom.urlsafe_base64.to_s
         end
