@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	  validates :password, confirmation: true
 	  validates :cpf, :phone, numericality: { only_integer: true }
 		validates :gender, presence: true
+		validates :category, presence: true
 		has_secure_password
 
     has_many :saved_workouts
