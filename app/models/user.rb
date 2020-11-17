@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 	    self.confirm_token = nil
 	    save!(:validate => false)
 	end
+	
 
 	private
 	def create_confirmation_token
