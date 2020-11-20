@@ -49,10 +49,9 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-      format.html { redirect_to root_path, notice: 'Email confirmado com sucesso! }
+      format.html { redirect_to root_path, notice: 'Email confirmado com sucesso!' }
     else
-      flash[:error] = "Falha na confirmação! Usuário não existe!"
-      redirect_to root_url
+      format.html { redirect_to root_path, notice: 'Falha na confirmação! Usuário não existe!' }
     end
   end
 
