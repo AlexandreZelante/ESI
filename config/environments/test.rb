@@ -6,6 +6,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  Rails.application.routes.default_url_options[:host] = '???'
+
   config.cache_classes = true
   config.action_view.cache_template_loading = true
 
