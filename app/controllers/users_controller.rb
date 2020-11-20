@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         UserMailer.registration_confirmation(@user).deliver
-        flash[:success] = "Confirme seu email antes de acessar"
         format.html { redirect_to root_path, notice: 'Confirme seu email antes de acessar' }
         #format.json { render :show, status: :created, location: @user }
       else
