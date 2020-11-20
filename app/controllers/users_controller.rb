@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def search
+    @parameter = params[:search]
+    @results = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+  end
+
   def destroy
     @user.destroy
     respond_to do |format|
@@ -46,7 +51,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
   end
 
   private
