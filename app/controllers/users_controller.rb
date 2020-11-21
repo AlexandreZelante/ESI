@@ -36,14 +36,29 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        UserMailer.registration_confirmation(@user).deliver
+        format.html { redirect_to root_path, notice: 'Confirme seu email antes de acessar' }
+        #format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end 
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Email confirmado com sucesso!"
+      redirect_to root_path
+      #format.html { redirect_to root_path, notice: 'Email confirmado com sucesso!' }
+    else
+      flash[:error] = "Falha na confirmação! Usuário não existe!"
+      redirect_to root_path
+      #format.html { redirect_to root_path, notice: 'Falha na confirmação! Usuário não existe!' }
+    end
+  end
 
   def new
     @user = User.new
@@ -55,6 +70,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :email_confirmation, :cpf, :birth_date, :phone, :gender, :category, :password, :password_confirmation)
+      params.require(:user).permit(:confirm_token, :name, :email, :email_confirmation, :cpf, :birth_date, :phone, :gender, :category, :password, :password_confirmation)
     end
 end
