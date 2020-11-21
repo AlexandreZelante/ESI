@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :update, :destroy]
   def index
-    @users = User.all
+    @parameter = params[:search]
+    @results = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
   end
 
   def show
-  end
-
-  def search
-    @parameter = params[:search]
-    @results = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
   end
 
   def destroy

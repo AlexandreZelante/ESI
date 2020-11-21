@@ -1,44 +1,46 @@
 <div class="container">
 
-    <h1>Usuários</h1>
+    <div style="margin:auto; width: 50rem;">
+        <h1>Usuários</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>CPF</th>
-                <th>Data de nascimento</th>
-                <th>Telefone</th>
-                <th>Gênero</th>
-                <th>Categoria</th>
-            </tr>
-        </thead>
+        <%= form_tag(users_path, :method => "get") do %>
+            <div class="input-group">
+                <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control" %>
+                
+                <div class="input-group-btn">
+                    <%= button_tag "Pesquisar", class: "btn btn-info glyphicon glyphicon-search", name: nil %>
+                </div>
+            </div>
+        <% end %>
 
-        <tbody>
-            <% @users.each do |users| %>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td><%= users.name %></td>
-                    <td><%= users.email %></td>
-                    <td><%= users.cpf %></td>
-                    <td><%= users.birth_date %></td>
-                    <td><%= users.phone %></td>
-                    <td><%= users.gender %></td>
-                    <td><%= users.category %></td>
-                    <td><%= link_to 'Show', users, :class => "btn btn-info" %></td>
+                    <th>Nome</th>
+                    <th>Categoria</th>
                 </tr>
-            <% end %>
-        </tbody>
-    </table>
+            </thead>
 
-    <br>
-
-    <div class="d-flex flex-row">
-        <div class="p-2">
-            <%= link_to 'Novo usuário', new_user_path, :class => "btn btn-primary" %>
-        </div>
-        <div class="p-2">
-            <%= link_to 'Voltar', root_path, :class => "btn btn-secondary" %>
+            <tbody>
+                <% @results.each do |results| %>
+                    <tr>
+                        <td><%= results.name %></td>
+                        <td><%= results.category %></td>
+                        <td><%= link_to 'Ver', results, :class => "btn btn-info" %></td>
+                        <td><%= button_tag "Seguir", :class => "btn btn-info" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <%= link_to 'Novo usuário', new_user_path, :class => "btn btn-primary" %>
+            </div>
+            <div class="p-2">
+                <%= link_to 'Voltar', root_path, :class => "btn btn-secondary" %>
+            </div>
         </div>
     </div>
+
 </div>

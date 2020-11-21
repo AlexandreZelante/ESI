@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :workouts
   resources :saved_workouts, only: [:create, :destroy]
-  get 'search', to: "users#search"
+  get 'users', to: "users#index"
   get 'sign_in' => 'sessions#new'
   post 'sign_in' => 'sessions#create'
   get 'sign_out'  => 'sessions#destroy'
