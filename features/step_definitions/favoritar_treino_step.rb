@@ -6,7 +6,8 @@ Dado("que eu estou logado") do
   fill_in "CPF", :with => "123"
   fill_in "Data de nascimento", :with => "22/12/1999"
   fill_in "Telefone", :with => "1111111111"
-  find('select').find(:xpath, 'option[1]').select_option
+  find('#user_gender').find(:xpath, 'option[1]').select_option
+  find('#user_category').find(:xpath, 'option[1]').select_option
   fill_in "Senha", :with => "password"
   fill_in "Confirme sua senha", :with => "password"
   click_on "Salvar"
@@ -29,11 +30,16 @@ Dado("que estou na página de um treino") do
   click_on "Mostrar"
 end
 
+Dado("que estou na página de um treino específico") do
+  visit "/workouts/1"
+end
+
 Quando("clico em Favoritar") do
   click_on "Favoritar"
 end
 
 Quando("clico em Desfavoritar") do
+  click_on "Treino avançado"
   click_on "Desfavoritar"
 end
 

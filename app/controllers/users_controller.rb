@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :update, :destroy]
   def index
-    @users = User.all
+    @parameter = params[:search]
+    @results = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
   end
 
   def show
@@ -61,7 +62,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
   end
 
   private
@@ -70,6 +70,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:confirm_token ,:name, :email, :email_confirmation, :cpf, :birth_date, :phone, :gender, :password, :password_confirmation)
+      params.require(:user).permit(:confirm_token, :name, :email, :email_confirmation, :cpf, :birth_date, :phone, :gender, :category, :password, :password_confirmation)
     end
 end

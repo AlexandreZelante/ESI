@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_230952) do
     t.date "birth_date"
     t.string "phone"
     t.string "gender"
+    t.string "category"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

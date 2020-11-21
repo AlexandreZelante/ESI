@@ -1,18 +1,18 @@
-<div class="card" style="margin:auto; margin-top: 15vmin; width: 20rem;">  
+<div class="card" style="margin:auto; margin-top: 15vmin; width: 20rem;">
   <div class="card-body">
     <%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
       <div class="field">
         <%= f.label :email, class: "card-title" %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
-    
-      </br>
+
+      <br/>
 
       <div class="field">
         <%= f.label :password, class: "card-title" %>
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>
-    
+
       <div class="dropdown-divider">
       </div>
 

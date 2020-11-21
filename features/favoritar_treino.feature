@@ -25,5 +25,5 @@ Cenário: Desfavoritar treino com sucesso
 
 Cenário: Tentar favoritar sem estar logado
   Dado que eu tenho um treino cadastrado
-  Dado que estou na página de um treino
+  Dado que estou na página de um treino específico
   Então não deve haver a opção de favoritar
