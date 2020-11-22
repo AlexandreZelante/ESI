@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_235409) do
+ActiveRecord::Schema.define(version: 2020_11_22_011828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_235409) do
     t.integer "saved_workouts_count"
     t.boolean "email_confirmed", default: false
     t.string "confirm_token"
+    t.boolean "private", default: false, null: false
   end
 
   create_table "workouts", force: :cascade do |t|

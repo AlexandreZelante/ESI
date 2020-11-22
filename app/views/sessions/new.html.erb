@@ -1,23 +1,21 @@
 <div class="card" style="margin:auto; margin-top: 15vmin; width: 20rem;">
   <div class="card-body">
     <%= form_with scope: :session, url: sign_in_path, local: true do |f| %>
-      <div class="field">
-        <%= f.label :email, class: "card-title" %>
+      <div class="field mb-3">
+        <%= f.label :email, "Email", class: "card-title" %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
 
-      <br/>
-
-      <div class="field">
-        <%= f.label :password, class: "card-title" %>
+      <div class="field mb-3">
+        <%= f.label :password, "Senha", class: "card-title" %>
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>
 
       <div class="dropdown-divider">
       </div>
 
-      <div class="actions">
-        <%= f.submit "login", class: "btn btn-primary" %>
+      <div class="actions mb-2 mt-3">
+        <%= f.submit "Entrar", class: "btn btn-primary", id: "login-btn" %>
       </div>
 
       <p>Novo aqui? <%= link_to "Registre-se agora!", new_user_path %></p>

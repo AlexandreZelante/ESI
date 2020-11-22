@@ -9,6 +9,6 @@ Cenário: Criar sessao com sucesso
 Dado que eu estou registrado
 Dado que eu estou na página de login
 Quando eu preencho o campo "Email" com "igor@antun.me"
-Quando eu preencho o campo "Password" com "password"
-E clico em Login
+Quando eu preencho o campo "Senha" com "password"
+E clico em Entrar
 Então consigo clicar em Sair
