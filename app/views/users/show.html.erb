@@ -1,6 +1,16 @@
 <div class="container" style="100rem">
 
     <h1><%= @user.name %></h1>
+    <% if logged_in? %>
+        <%- if current_user.id != @user.id -%>
+            <%- unless current_user.followed_users.exists?(followed_id: @user.id) -%>
+            <%= button_to 'Seguir', followed_users_path(followed_id: @user.id), method: :post, :class => 'btn btn-sm btn-warning' %>
+            <%- else -%>
+            <%= button_to 'Deixar de seguir', followed_user_path(id: @user.id), method: :delete, :class => 'btn btn-sm btn-secondary' %>
+            <%- end -%>
+        <%- end -%>
+    <%- end -%>
+    <br/>
     <ul>
         <li>Email: <%= @user.email %></li>
         <li>CPF: <%= @user.cpf %></li>

@@ -6,7 +6,7 @@
         <%= form_tag(users_path, :method => "get") do %>
             <div class="input-group">
                 <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control" %>
-                
+
                 <div class="input-group-btn">
                     <%= button_tag "Pesquisar", class: "btn btn-info glyphicon glyphicon-search", name: nil %>
                 </div>
@@ -18,6 +18,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>Categoria</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
 
@@ -26,13 +27,21 @@
                     <tr>
                         <td><%= results.name %></td>
                         <td><%= results.category %></td>
-                        <td><%= link_to 'Ver', results, :class => "btn btn-info" %></td>
-                        <td><%= button_tag "Seguir", :class => "btn btn-info" %></td>
+                        <td>
+                            <%= link_to 'Ver', results, :class => "btn btn-info" %>
+                            <% if logged_in? && current_user.id != results.id %>
+                                <%- unless current_user.followed_users.exists?(followed_id: results.id) -%>
+                                    <%= button_to 'Seguir', followed_users_path(followed_id: results.id), method: :post, :class => 'btn btn-warning', form: {style: 'display:inline-block;'} %>
+                                <%- else -%>
+                                    <%= button_to 'Deixar de seguir', followed_user_path(id: results.id), method: :delete, :class => 'btn btn-secondary', form: {style: 'display:inline-block;'} %>
+                                <%- end -%>
+                            <%- end -%>
+                        </td>
                     </tr>
                 <% end %>
             </tbody>
         </table>
-    
+
         <div class="d-flex flex-row">
             <div class="p-2">
                 <%= link_to 'Novo usuário', new_user_path, :class => "btn btn-primary" %>
