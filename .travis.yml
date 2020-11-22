@@ -2,6 +2,9 @@ language: ruby
 rvm:
  - 2.7.1
 
+env:
+  - CC_TEST_REPORTER_ID=e459b339289caeadc028552d603c6465c5aadcffedbdcf960d4e2c66966c03ae
+
 addons:
   apt:
     packages:
