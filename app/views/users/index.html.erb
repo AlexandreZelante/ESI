@@ -24,7 +24,7 @@
 
             <tbody>
                 <% @results.each do |results| %>
-                    <tr>
+                    <tr user-result-id="<%= results.name %>">
                         <td><%= results.name %></td>
                         <td><%= results.category %></td>
                         <td>
@@ -37,6 +37,12 @@
                                 <%- end -%>
                             <%- end -%>
                         </td>
+                    </tr>
+                <% end %>
+
+                <% if @results.length === 0 %>
+                    <tr id="no_user_text">
+                    <td>Nenhum Usuário encontrado</td>
                     </tr>
                 <% end %>
             </tbody>

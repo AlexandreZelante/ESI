@@ -17,13 +17,18 @@
         <li>Data de nascimeto: <%= @user.birth_date %></li>
         <li>Telefone: <%= @user.phone %></li>
         <li>Gênero: <%= @user.gender %></li>
-        <li>Categoria: <% @user.category %></li>
+        <li>Categoria: <%= @user.category %></li> 
+        <li>Visibilidade: <% if @user.private %>Privado<% else %>Público<%- end -%></li>
     </ul>
 
     <br/>
     <div class="d-flex flex-row-reverse">
         <div class="p-2">
-            <%= link_to 'Editar dados', edit_user_path, class: "btn btn-primary" %>
+            <% if logged_in? %>
+                <%- if current_user.id = @user.id -%>
+                    <%= link_to 'Editar dados', edit_user_path, class: "btn btn-primary" %>
+                <%- end -%>
+            <%- end -%>
         </div>
         <div class="p-2">
             <%= link_to 'Voltar', users_path, class: "btn btn-secondary" %>
