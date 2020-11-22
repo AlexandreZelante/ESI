@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
 
     has_many :saved_workouts
 		has_many :saved, through: :saved_workouts, source: :workout
+
+		has_many :followed_users
+		has_many :followed, through: :followed_users, source: :user
 end

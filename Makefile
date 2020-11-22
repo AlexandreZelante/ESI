@@ -6,6 +6,7 @@ create_tables:
 
 migrate:
 	docker-compose run web rake db:migrate
+	docker-compose run web rake db:migrate RAILS_ENV=test
 
 up:
 	docker-compose up -d

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_230952) do
+ActiveRecord::Schema.define(version: 2020_11_21_235409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2020_11_07_230952) do
     t.string "rest", null: false
     t.bigint "day_id", null: false
     t.index ["day_id"], name: "index_exercises_on_day_id"
+  end
+
+  create_table "followed_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_followed_users_on_followed_id"
+    t.index ["user_id"], name: "index_followed_users_on_user_id"
   end
 
   create_table "saved_workouts", force: :cascade do |t|
@@ -52,6 +61,8 @@ ActiveRecord::Schema.define(version: 2020_11_07_230952) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.integer "saved_workouts_count"
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
   end
 
   create_table "workouts", force: :cascade do |t|

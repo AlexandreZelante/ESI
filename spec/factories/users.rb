@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :user do
-    id { 1 }
     name { "Igor Antun" }
     email { "igor@antun.me" }
     cpf { "12345678909" }
