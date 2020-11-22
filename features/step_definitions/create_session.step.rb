@@ -21,8 +21,8 @@ Quando('eu preencho o campo {string} com {string}') do |string, string2|
   fill_in string, :with => string2
 end
 
-E('clico em Login') do
-  click_on 'login'
+E('clico em Entrar') do
+  click_on 'login-btn'
 end
 
 Então('consigo clicar em Sair') do

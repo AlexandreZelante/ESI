@@ -15,8 +15,8 @@ Dado("que cadastro um usuário privado") do
 
   visit "/sign_in"
   fill_in "Email", :with => "hessel@usp.br"
-  fill_in "Password", :with => "password"
-  click_on "login"
+  fill_in "Senha", :with => "password"
+  click_on "login-btn"
 end
 
 Dado("que cadastro um usuário publico") do
@@ -36,8 +36,8 @@ Dado("que cadastro um usuário publico") do
 
   visit "/sign_in"
   fill_in "Email", :with => "hessel@usp.br"
-  fill_in "Password", :with => "password"
-  click_on "login"
+  fill_in "Senha", :with => "password"
+  click_on "login-btn"
 end
 
 Então("vou para a listagem de usuarios") do

@@ -8,7 +8,7 @@
                 <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control" %>
 
                 <div class="input-group-btn">
-                    <%= button_tag "Pesquisar", class: "btn btn-info glyphicon glyphicon-search", name: nil %>
+                    <%= button_tag "Pesquisar", class: "btn btn-primary glyphicon glyphicon-search", name: nil %>
                 </div>
             </div>
         <% end %>
@@ -28,7 +28,7 @@
                         <td><%= results.name %></td>
                         <td><%= results.category %></td>
                         <td>
-                            <%= link_to 'Ver', results, :class => "btn btn-info" %>
+                            <%= link_to 'Ver', results, :class => "btn btn-primary" %>
                             <% if logged_in? && current_user.id != results.id %>
                                 <%- unless current_user.followed_users.exists?(followed_id: results.id) -%>
                                     <%= button_to 'Seguir', followed_users_path(followed_id: results.id), method: :post, :class => 'btn btn-warning', form: {style: 'display:inline-block;'} %>
