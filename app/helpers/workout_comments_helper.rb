@@ -1,0 +1,2 @@
+module WorkoutCommentsHelper
+end

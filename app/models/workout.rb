@@ -15,4 +15,7 @@ class Workout < ApplicationRecord
 
   has_many :saved_workouts
   has_many :saved_by, through: :saved_workouts, source: :user
+
+  has_many :workout_comments, inverse_of: :workout, dependent: :destroy
+  accepts_nested_attributes_for :workout_comments, reject_if: :all_blank, allow_destroy: true
 end

@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
 		has_secure_password
 
     has_many :saved_workouts
-		has_many :saved, through: :saved_workouts, source: :workout
+	has_many :saved, through: :saved_workouts, source: :workout
+	has_many :workout_comments
 end

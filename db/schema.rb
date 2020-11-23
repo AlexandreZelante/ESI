@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_230952) do
+ActiveRecord::Schema.define(version: 2020_11_21_011232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2020_11_07_230952) do
     t.integer "saved_workouts_count"
   end
 
+  create_table "workout_comments", force: :cascade do |t|
+    t.string "text"
+    t.bigint "workout_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_workout_comments_on_user_id"
+    t.index ["workout_id"], name: "index_workout_comments_on_workout_id"
+  end
+
   create_table "workouts", force: :cascade do |t|
     t.string "name", null: false
     t.string "coach", null: false
@@ -67,4 +77,6 @@ ActiveRecord::Schema.define(version: 2020_11_07_230952) do
   add_foreign_key "exercises", "days"
   add_foreign_key "saved_workouts", "users"
   add_foreign_key "saved_workouts", "workouts"
+  add_foreign_key "workout_comments", "users"
+  add_foreign_key "workout_comments", "workouts"
 end
