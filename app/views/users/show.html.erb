@@ -1,19 +1,34 @@
 <div class="container" style="100rem">
 
     <h1><%= @user.name %></h1>
+    <% if logged_in? %>
+        <%- if current_user.id != @user.id -%>
+            <%- unless current_user.followed_users.exists?(followed_id: @user.id) -%>
+            <%= button_to 'Seguir', followed_users_path(followed_id: @user.id), method: :post, :class => 'btn btn-sm btn-warning' %>
+            <%- else -%>
+            <%= button_to 'Deixar de seguir', followed_user_path(id: @user.id), method: :delete, :class => 'btn btn-sm btn-secondary' %>
+            <%- end -%>
+        <%- end -%>
+    <%- end -%>
+    <br/>
     <ul>
         <li>Email: <%= @user.email %></li>
         <li>CPF: <%= @user.cpf %></li>
         <li>Data de nascimeto: <%= @user.birth_date %></li>
         <li>Telefone: <%= @user.phone %></li>
         <li>Gênero: <%= @user.gender %></li>
-        <li>Categoria: <% @user.category %></li>
+        <li>Categoria: <%= @user.category %></li> 
+        <li>Visibilidade: <% if @user.private %>Privado<% else %>Público<%- end -%></li>
     </ul>
 
     <br/>
     <div class="d-flex flex-row-reverse">
         <div class="p-2">
-            <%= link_to 'Editar dados', edit_user_path, class: "btn btn-primary" %>
+            <% if logged_in? %>
+                <%- if current_user.id = @user.id -%>
+                    <%= link_to 'Editar dados', edit_user_path, class: "btn btn-primary" %>
+                <%- end -%>
+            <%- end -%>
         </div>
         <div class="p-2">
             <%= link_to 'Voltar', users_path, class: "btn btn-secondary" %>

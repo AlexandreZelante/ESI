@@ -14,8 +14,8 @@ Dado("que eu estou logado") do
 
   visit "/sign_in"
   fill_in "Email", :with => "igor@antun.me"
-  fill_in "Password", :with => "password"
-  click_on "login"
+  fill_in "Senha", :with => "password"
+  click_on "login-btn"
 end
 
 Dado("que eu tenho um treino cadastrado") do
