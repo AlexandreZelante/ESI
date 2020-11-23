@@ -63,4 +63,32 @@
       <%= link_to 'Voltar', workouts_path, :class => "btn btn-secondary" %>
     </div>
   </div>
+
+
+  <h2>Comentários</h2>
+  <hr>
+  <div class="flex-row-reverse">
+
+  <%= form_with scope: :workout_comment, url: workout_comments_path do |f| %>
+    <div class="form-group">
+      <%= f.label :text, "Adicionar comentário" %>
+      <%= f.text_area :text, :class => "mb-3 form-control", required: true %>
+      <%= f.hidden_field :workout_id, value: @workout.id %>
+      <%= f.submit "Salvar", :class => "btn btn-primary", :id => "Salvar" %>
+    </div>
+  <% end %>
+
+  <% @workout.workout_comments.each do |workout_comment| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= workout_comment.user.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short)  %></h6>
+        <p class="card-text"><%= workout_comment.text %></p>
+      </div>
+    </div>
+    <br>
+  <% end %>
+
+  </div>
+  
 </div>
