@@ -6,6 +6,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    @following = User.joins(
+      User.arel_table.join(FollowedUser.arel_table).on(
+        FollowedUser.arel_table[:user_id].eq(@user.id).and(
+          FollowedUser.arel_table[:followed_id].eq(User.arel_table[:id])
+        )
+      ).join_sources
+    )
+
+    @followed = User.joins(
+      User.arel_table.join(FollowedUser.arel_table).on(
+        FollowedUser.arel_table[:followed_id].eq(@user.id).and(
+          FollowedUser.arel_table[:user_id].eq(User.arel_table[:id])
+        )
+      ).join_sources
+    )
   end
 
   def destroy

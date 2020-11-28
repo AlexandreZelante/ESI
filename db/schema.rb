@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_11_22_011828) do
 
   # These are extensions that must be enabled in order to support this database
@@ -32,8 +31,8 @@ ActiveRecord::Schema.define(version: 2020_11_22_011828) do
   end
 
   create_table "followed_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "followed_id"
+    t.bigint "user_id", null: false
+    t.bigint "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_followed_users_on_followed_id"
@@ -62,8 +61,6 @@ ActiveRecord::Schema.define(version: 2020_11_22_011828) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.integer "saved_workouts_count"
-    t.boolean "email_confirmed", default: false
-    t.string "confirm_token"
     t.boolean "private", default: false, null: false
   end
 
