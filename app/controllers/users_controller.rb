@@ -14,6 +14,12 @@ class UsersController < ApplicationController
       ).join_sources
     )
 
+    @following_number = 0
+
+    @following.each do |f|
+      @following_number = @following_number + 1
+    end
+
     @followed = User.joins(
       User.arel_table.join(FollowedUser.arel_table).on(
         FollowedUser.arel_table[:followed_id].eq(@user.id).and(
@@ -21,6 +27,12 @@ class UsersController < ApplicationController
         )
       ).join_sources
     )
+
+    @followed_number = 0
+
+    @followed.each do |f|
+      @followed_number = @followed_number + 1
+    end
   end
 
   def destroy
