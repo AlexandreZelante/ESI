@@ -2,7 +2,17 @@ class UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :update, :destroy]
   def index
     @parameter = params[:search]
-    @results = User.all.where("lower(name) LIKE :search AND private = false", search: "%#{@parameter}%")
+    @category = params[:category]
+
+    sql = "lower(name) LIKE :search AND private = false"
+
+    if @category === "Aluno" 
+      sql = sql + " AND category = 'Aluno'"
+    elsif @category === "Treinador" 
+      sql = sql + " AND category = 'Treinador'"
+    end
+
+    @results = User.all.where(sql, search: "%#{@parameter}%")
   end
 
   def show
