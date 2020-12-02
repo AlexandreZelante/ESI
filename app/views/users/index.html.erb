@@ -5,10 +5,10 @@
 
         <%= form_tag(users_path, :method => "get") do %>
             <div class="input-group">
-                <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control" %>
+                <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control", id: "search-field" %>
 
                 <div class="input-group-btn">
-                    <%= button_tag "Pesquisar", class: "btn btn-primary glyphicon glyphicon-search", name: nil %>
+                    <%= button_tag "Pesquisar", class: "btn btn-primary glyphicon glyphicon-search", name: nil, id: "search-button" %>
                 </div>
             </div>
 
