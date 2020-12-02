@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @parameter = params[:search]
     @category = params[:category]
+    @gender = params[:gender]
 
     sql = "lower(name) LIKE :search AND private = false"
 
@@ -10,6 +11,14 @@ class UsersController < ApplicationController
       sql = sql + " AND category = 'Aluno'"
     elsif @category === "Treinador" 
       sql = sql + " AND category = 'Treinador'"
+    end
+
+    if @gender === "Masculino" 
+      sql = sql + " AND gender = 'Masculino'"
+    elsif @gender === "Feminino" 
+      sql = sql + " AND gender = 'Feminino'"
+    elsif @gender === "Outro" 
+      sql = sql + " AND gender = 'Outro'"
     end
 
     @results = User.all.where(sql, search: "%#{@parameter}%")
