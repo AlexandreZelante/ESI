@@ -1,5 +1,5 @@
 Dado("que tenho um usuario cadastrado com o nome {string}") do |name|
-    user = User.create(name: name)
+    user = User.create(name: name, :private => false)
     user.save
 end
 
