@@ -16,8 +16,4 @@ Quando("clico no botão de busca de usuario {string}") do |button|
     click_on button
 end
 
-Então("o usuario {string} deve estar na listagem") do |name|
-    userInList = find('tr[user-result-id="' + name + '"]')
-    expect(userInList)
-end
 

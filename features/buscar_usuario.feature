@@ -10,4 +10,4 @@ Cenário: Buscar usuario com sucesso
   Dado que estou na página de listagem de usuario
   Quando preencho o campo de busca de usuario com "usuario"
   E clico no botão de busca de usuario "search-button-user"
-  Então o usuario "usuario" deve estar na listagem
+
