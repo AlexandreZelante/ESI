@@ -5,7 +5,7 @@
 
         <%= form_tag(users_path, :method => "get") do %>
             <div class="input-group">
-                <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control", id: "search-field" %>
+                <%= search_field_tag :search, params[:search], placeholder: "Nome", class: "form-control", id: "search-field-user" %>
  
                 <div style="padding-right: 3 rem; padding-left: 3 rem;">
                     <%= select_tag(:category, options_for_select([['Todos'], ['Aluno'], ['Treinador']]), {class: "custom-select"})%>
@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="input-group-btn">
-                    <%= button_tag "Pesquisar", class: "btn btn-primary glyphicon glyphicon-search", name: nil, id: "search-button" %>
+                    <%= button_tag "Pesquisar", class: "btn btn-primary glyphicon glyphicon-search", name: nil, id: "search-button-user" %>
                 </div>
             </div>
         <% end %>
