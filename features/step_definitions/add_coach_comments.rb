@@ -14,5 +14,6 @@ Dado("que outro usuário também está cadastrado") do
   end
 
   Dado("que estou na página de um usuário") do
-    visit "users/1"
+    visit "/users"
+    click_on "Ver"
   end
