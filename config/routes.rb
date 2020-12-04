@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :workouts
   resources :workout_comments
+  resources :coach_comments
   resources :saved_workouts, only: [:create, :destroy]
   resources :followed_users, only: [:create, :destroy]
   get 'users', to: "users#index"

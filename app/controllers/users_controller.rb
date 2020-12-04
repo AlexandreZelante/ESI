@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @coach_comments = CoachComment.all.where(coach: params[:id])
   end
 
   def destroy

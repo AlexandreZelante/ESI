@@ -34,4 +34,32 @@
             <%= link_to 'Voltar', users_path, class: "btn btn-secondary" %>
         </div>
     </div>
+
+    <h2>Avaliações</h2>
+    <hr>
+    <div class="flex-row-reverse">
+
+        <% if logged_in? %>
+            <%= form_with scope: :coach_comment, url: coach_comments_path do |f| %>
+                <div class="form-group">
+                <%= f.label :text, "Adicionar avaliação" %>
+                <%= f.text_area :text, :class => "mb-3 form-control", required: true %>
+                <%= f.hidden_field :coach_id, value: @user.id %>
+                <%= f.submit "Salvar", :class => "btn btn-primary", :id => "Salvar" %>
+                </div>
+            <% end %>
+        <%- end -%>
+
+        <% @coach_comments.each do |coach_comment| %>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= coach_comment.user_active.name %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= coach_comment.created_at.to_formatted_s(:short)  %></h6>
+                    <p class="card-text"><%= coach_comment.text %></p>
+                </div>
+            </div>
+            <br>
+        <% end %>
+
+    </div>
 </div>
