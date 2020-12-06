@@ -2,10 +2,56 @@ class UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :update, :destroy]
   def index
     @parameter = params[:search]
-    @results = User.all.where("lower(name) LIKE :search AND private = false", search: "%#{@parameter}%")
+    @category = params[:category]
+    @gender = params[:gender]
+
+    sql = "lower(name) LIKE :search AND private = false"
+
+    if @category === "Aluno" 
+      sql = sql + " AND category = 'Aluno'"
+    elsif @category === "Treinador" 
+      sql = sql + " AND category = 'Treinador'"
+    end
+
+    if @gender === "Masculino" 
+      sql = sql + " AND gender = 'Masculino'"
+    elsif @gender === "Feminino" 
+      sql = sql + " AND gender = 'Feminino'"
+    elsif @gender === "Outro" 
+      sql = sql + " AND gender = 'Outro'"
+    end
+
+    @results = User.all.where(sql, search: "%#{@parameter}%")
   end
 
   def show
+    @following = User.joins(
+      User.arel_table.join(FollowedUser.arel_table).on(
+        FollowedUser.arel_table[:user_id].eq(@user.id).and(
+          FollowedUser.arel_table[:followed_id].eq(User.arel_table[:id])
+        )
+      ).join_sources
+    )
+
+    @following_number = 0
+
+    @following.each do |f|
+      @following_number = @following_number + 1
+    end
+
+    @followed = User.joins(
+      User.arel_table.join(FollowedUser.arel_table).on(
+        FollowedUser.arel_table[:followed_id].eq(@user.id).and(
+          FollowedUser.arel_table[:user_id].eq(User.arel_table[:id])
+        )
+      ).join_sources
+    )
+
+    @followed_number = 0
+
+    @followed.each do |f|
+      @followed_number = @followed_number + 1
+    end
   end
 
   def destroy
