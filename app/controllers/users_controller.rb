@@ -25,6 +25,9 @@ class UsersController < ApplicationController
   end
 
   def show
+
+    @coach_comments = CoachComment.all.where(coach: params[:id])  
+    
     @following = User.joins(
       User.arel_table.join(FollowedUser.arel_table).on(
         FollowedUser.arel_table[:user_id].eq(@user.id).and(
