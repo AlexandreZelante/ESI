@@ -5,9 +5,21 @@ class WorkoutCommentsController < ApplicationController
     @workout_comment = WorkoutComment.new(text: workout_comment_params[:text], workout_id: workout_comment_params[:workout_id], user_id: session[:user_id])
 
     if @workout_comment.save
-      @workout = Workout.find(workout_comment_params[:workout_id])
-      redirect_to @workout, success: 'Comentário adicionado com sucesso'
+      @workout_comment = WorkoutComment.find(workout_comment_params[:workout_id])
+      redirect_to @workout_comment, success: 'Comentário adicionado com sucesso'
     end
+  end
+
+  # PATCH/PUT /workouts/1
+  def update
+    if @workout_comment.update(workout_comment_params)
+      redirect_to @workout_comment, success: 'Comentário atualizado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
+  def edit
   end
 
   private
