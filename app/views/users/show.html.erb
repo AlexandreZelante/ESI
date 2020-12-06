@@ -1,4 +1,4 @@
-<div class="container" style="100rem">
+<div class="container" style="margin:auto; 50rem">
 
     <h1><%= @user.name %></h1>
     <% if logged_in? %>
@@ -20,6 +20,54 @@
         <li>Categoria: <%= @user.category %></li> 
         <li>Visibilidade: <% if @user.private %>Privado<% else %>Público<%- end -%></li>
     </ul>
+
+    <br/>
+    
+    <h3> Seguindo </h3>
+    Total de seguidores: <%= @following_number %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>   
+            <% @following.each do |f| %>
+                <tr>
+                    <td><%= f.name %></td>
+                    <td><%= f.category %></td>
+                    <td><%= link_to 'Ver', f, :class => "btn btn-primary" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <br/>
+
+    <h3> Seguidores </h3>
+    Total de pessoal seguindo o usuário: <%= @followed_number %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>   
+            <% @followed.each do |f| %>
+                <tr>
+                    <td><%= f.name %></td>
+                    <td><%= f.category %></td>
+                    <td><%= link_to 'Ver', f, :class => "btn btn-primary" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 
     <br/>
     <div class="d-flex flex-row-reverse">
