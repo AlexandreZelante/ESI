@@ -84,14 +84,7 @@
         <% if session[:id] == workout_comment.user.id %>
           <h5 class="card-title"><%= workout_comment.user.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short)  %></h6>
-          <%= form_with scope: :workout_comment, url: workout_comments_path do |f| %>
-            <div class="form-group">
-              <%= f.label :text, "Editar comentário" %>
-              <%= f.text_area :text, :class => "mb-3 form-control", required: true placeholder=workout_comment.text %>
-              <%= f.hidden_field :workout_id, value: @workout.id %>
-              <%= f.submit "Editar", :class => "btn btn-primary", :id => "Editar" %>
-            </div>
-          <% end %>
+          <p class="card-text"><%= workout_comment.text %></p>
         <% else %>
           <h5 class="card-title"><%= workout_comment.user.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short)  %></h6>
