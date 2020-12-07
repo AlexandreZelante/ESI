@@ -84,7 +84,7 @@
           <h5 class="card-title"><%= workout_comment.user.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short)  %></h6>
           <p class="card-text"><%= workout_comment.text %></p>
-          <%= button_tag "Editar", class: => "btn btn-primary" name: nil, id: "search-button-user" %>
+          <%= button_tag "Editar", name: nil, id: "search-button-user" %>
         </div>
       </div>
       <br>
