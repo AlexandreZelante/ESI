@@ -83,10 +83,9 @@
         <div class="card-body">
           <h5 class="card-title"><%= workout_comment.user.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short) %></h6>
-          #<p class="card-text"><%= workout_comment.text %></p>
-          <%= text_area_tag "Editar comentário", name: nil, id: "Editar comentário" %><%= workout_comment.text %></textarea>
+          <%= text_area_tag "Editar comentário", workout_comment.text %></textarea>
           <% if logged_in? %>
-            <%= button_tag "Editar", name: nil, id: "search-button-user" %>
+            <%= button_tag "Editar", class: "btn btn-primary glyphicon glyphicon-search", name: nil, id: "search-button-user" %>
           <%- end -%>
         </div>
       </div>
