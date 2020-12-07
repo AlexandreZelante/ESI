@@ -5,3 +5,7 @@ Dado("que eu tenho um comentário de treino cadastrado") do
     workout_comment.user_id = 1
     workout_comment.save
 end
+
+Dado("que eu clico no botão Editar") do
+    click_button("Editar")
+end

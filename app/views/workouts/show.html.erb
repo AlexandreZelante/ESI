@@ -84,6 +84,12 @@
         <h5 class="card-title"><%= workout_comment.user.name %></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short)  %></h6>
         <p class="card-text"><%= workout_comment.text %></p>
+        <%= form_with scope: :workout_comment, url: workout_comments_path do |f| %>
+          <div class="form-group">
+            <%= f.label :text, "Editar comentário" %>
+            <%= f.submit "Editar", :class => "btn btn-primary", :id => "Editar" %>
+          </div>
+        <% end %>
       </div>
     </div>
     <br>
