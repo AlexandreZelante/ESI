@@ -70,6 +70,78 @@
     </table>
 
     <br/>
+
+    <h3> Treinos favoritos </h3>
+    <%- if @user.saved.any? -%>
+      <div class="accordion" id="savedWorkouts">
+        <% @user.saved.each do |saved_workout| %>
+          <div class="card">
+            <div class="card-header" id="heading-<%= saved_workout.id %>">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-<%= saved_workout.id %>"  aria-expanded="true" aria-controls="collapseOne">
+                  <%= saved_workout.name %> (<%= saved_workout.coach %>)
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapse-<%= saved_workout.id %>" class="collapse" aria-labelledby="heading-<%= saved_workout.id %>" data-parent="#savedWorkouts">
+              <div class="card-body">
+                <h5>Treinador</h5>
+                <div class="p-2"><%= saved_workout.coach %></div>
+                <h5>Descrição</h5>
+                <div class="p-2"><%= simple_format(saved_workout.description) %></div>
+                <h5>Dias</h5>
+                <div class="p-2">
+                  <% saved_workout.days.each do |day| %>
+                    <div class="card">
+                      <div class="card-header">
+                        <h6><%= day.name %></h6>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <% day.exercises.each do |exercise| %>
+                            <li class="list-group-item">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <small>EXERCÍCIO</small>
+                                  <p><%= exercise.name %></p>
+                                </div>
+                                <div class="col-sm-3">
+                                  <small>SÉRIES</small>
+                                  <p><%= exercise.sets %></p>
+                                </div>
+                                <div class="col-sm-3">
+                                  <small>REPETIÇÕES</small>
+                                  <p><%= exercise.repetitions %></p>
+                                </div>
+                                <div class="col-sm-3">
+                                  <small>DESCANSO</small>
+                                  <p><%= exercise.rest %></p>
+                                </div>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                    <br>
+                  <% end %>
+                </div>
+                <div class="d-flex flex-row">
+                  <div class="p-2">
+                    <%= link_to 'Abrir', saved_workout, :class => "btn btn-primary" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <%- else -%>
+      <p>Esse usuário ainda não possui treinos favoritados</p>
+    <%- end -%>
+
+    <br/>
     <div class="d-flex flex-row-reverse">
         <div class="p-2">
             <% if logged_in? %>

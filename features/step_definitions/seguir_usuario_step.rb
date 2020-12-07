@@ -15,6 +15,7 @@ end
 
 Dado("que eu não estou mais logado") do
   click_on "Sair"
+  expect(page).to have_content('Bem vindo!')
 end
 
 Dado("que estou na página de outro usuário") do
