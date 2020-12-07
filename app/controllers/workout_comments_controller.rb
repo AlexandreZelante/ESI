@@ -10,6 +10,17 @@ class WorkoutCommentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @workout_comment.update(workout_comment_params[:workout_id])
+      redirect_to @workout, success: 'Comentário atualizado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
   private
     def set_workout_comment
       @workout_comment = WorkoutComment.find(params[:id])
