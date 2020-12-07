@@ -1,3 +1,3 @@
-Quando ("clico no link de Editar") do
+Quando ("clico no botão de Editar") do
     click_on "Editar"
 end

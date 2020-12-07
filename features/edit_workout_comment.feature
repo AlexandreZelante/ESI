@@ -12,6 +12,7 @@ Cenário: Editar comentario de um treino com sucesso
   E clico no botão Salvar
   Dado que estou na página de um treino
   Então o comentário "Treino bacana" deve estar na listagem de comentários
-  Quando clico no link de Editar
+  Quando clico no botão de Editar
   E eu preencho o campo "Editar comentário" com "Treino supimpa"
-  #Então o comentário "Treino supimpa" deve estar na listagem de comentários
+  Quando clico no botão de Editar
+  Então o comentário "Treino supimpa" deve estar na listagem de comentários
