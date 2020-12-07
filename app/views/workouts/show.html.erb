@@ -84,7 +84,7 @@
         <h5 class="card-title"><%= workout_comment.user.name %></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%= workout_comment.created_at.to_formatted_s(:short)  %></h6>
         <p class="card-text"><%= workout_comment.text %></p>
-        <%= button_to 'Editar', edit_workout_comment_path(workout_comment), method: :post, :class => 'btn btn-link p-0', form: {style: 'display:inline-block'} %>
+        <%= button_to 'Editar', edit_workout_comment_path(workout_comment), method: :post, :class => 'btn btn-link p-0', form: {style: 'display:inline-block'}, :id => "Editar" %>
       </div>
     </div>
     <br>
