@@ -1,6 +1,6 @@
 # Fábrica de Monstro
 [![Maintainability](https://api.codeclimate.com/v1/badges/40d294a4759c7df57ae0/maintainability)](https://codeclimate.com/github/AlexandreZelante/ESI/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/40d294a4759c7df57ae0/test_coverage)](https://codeclimate.com/github/AlexandreZelante/ESI/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/AlexandreZelante/ESI/badge.svg?branch=master)](https://coveralls.io/github/AlexandreZelante/ESI?branch=master)
 [![Build Status](https://travis-ci.org/AlexandreZelante/ESI.svg?branch=master)](https://travis-ci.org/AlexandreZelante/ESI)
 
 - Link Heroku: https://esi-2020.herokuapp.com
