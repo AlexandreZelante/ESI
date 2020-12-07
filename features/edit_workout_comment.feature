@@ -13,5 +13,5 @@ Cenário: Editar comentario de um treino com sucesso
   Dado que estou na página de um treino
   Então o comentário "Treino bacana" deve estar na listagem de comentários
   Quando clico no link de Editar
-  #E eu preencho o campo "Editar comentário" com "Treino supimpa"
+  E eu preencho o campo "Editar comentário" com "Treino supimpa"
   #Então o comentário "Treino supimpa" deve estar na listagem de comentários
