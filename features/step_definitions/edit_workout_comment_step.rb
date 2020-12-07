@@ -6,6 +6,6 @@ Dado("que eu tenho um comentário de treino cadastrado") do
     workout_comment.save
 end
 
-Quando ("clico no botão Editar") do
-    click_button("Editar")
+Quando ("clico no link de Editar") do
+    click_on "Editar"
 end

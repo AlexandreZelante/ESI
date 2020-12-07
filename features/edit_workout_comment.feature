@@ -9,7 +9,7 @@ Cenário: Editar comentario de um treino com sucesso
   Dado que eu tenho um treino cadastrado
   Dado que estou na página de um treino
   Dado que eu tenho um comentário de treino cadastrado
-  Quando clico no botão Editar
+  Quando clico no link de Editar
   #Quando eu preencho o campo "Adicionar comentário" com "Treino ótimo para hipertrofia, realmente estou muito bombado!"
   #E clico no botão Salvar
   #Então o comentário "Treino ótimo para hipertrofia, realmente estou muito bombado!" deve estar na listagem de comentários
